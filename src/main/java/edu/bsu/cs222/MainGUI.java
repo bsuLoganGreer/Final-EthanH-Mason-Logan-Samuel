@@ -22,6 +22,7 @@ public class MainGUI extends Application {
     }
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
+    private PhotoManager photoManager = new PhotoManager();
 
     private final ComboBox<String> filterSelector = new ComboBox<>();
     //private Photo photoField = new Photo();
@@ -64,41 +65,25 @@ public class MainGUI extends Application {
             }
         });
     }
+    private void configureDisplayPhotoButton() {
+        displayPhotoButton.setOnAction(event -> {
+            try {
+                if (filterSelector.getValue().equals("Blur"))
+                    blur();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
 
 
     private void selectPhoto() throws IOException {
-        //photoManager.selectPhoto();
+        photoManager.selectPhoto();
+    }
+    private void blur() throws IOException{
+        photoManager.blurImage();
     }
 
 
-    private void displayDisconnectAlert() {
-        Alert disconnectAlert = new Alert(Alert.AlertType.ERROR);
-        disconnectAlert.setHeaderText("Disconnect Error:");
-        disconnectAlert.setContentText("Your device is not connected to the internet!");
-        disconnectAlert.show();
-    }
 
-
-    private void displayAnyRedirect(RevisionParser Parser, JSONArray wikiResult) {
-        String currentTitle = Parser.checkRedirect(wikiResult);
-        if (currentTitle != null) {
-            specialField.setText(String.format("The page was redirected to %s.\n", currentTitle));
-        }
-    }
-
-    private void setToAskForSearch() {
-        resetDisplay();
-        specialField.setText("Please input a article title.");
-    }
-
-    private void setToNoPage() {
-        resetDisplay();
-        specialField.setText("There is not a page under this name!");
-    }
-
-    private void resetDisplay() {
-        inputField.setEditable(true);
-        specialField.setText("");
-        outputField.setText("");
-    }
 }
