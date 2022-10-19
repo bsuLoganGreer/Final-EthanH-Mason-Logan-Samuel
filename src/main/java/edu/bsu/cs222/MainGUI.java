@@ -2,7 +2,7 @@ package edu.bsu.cs222;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,8 +10,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import net.minidev.json.JSONArray;
 
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
