@@ -1,12 +1,13 @@
 package edu.bsu.cs222;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class PhotoManager {
-    private Image originalImage;
-    private Image displayImage;
+    private BufferedImage originalImage;
+    private BufferedImage displayImage;
     //remove comments once classes are created
-    //private blurFilter = new BlurFilter();
+    //private blur = new Blur();
     //private expandImage = new expandImage();
     //private imageSelector = new ImageSelector();
 
@@ -14,7 +15,7 @@ public class PhotoManager {
         selectPhoto();
     }
 
-    public PhotoManager(Image source){
+    public PhotoManager(BufferedImage source){
         originalImage = source;
         resetImage();
     }
@@ -34,7 +35,7 @@ public class PhotoManager {
         return displayImage;
     }
     public void blurImage(){
-        //blurFilter.blur(displayImage);
+        //blur.blur(displayImage);
     }
 
     public void expandImage(){
