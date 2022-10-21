@@ -20,6 +20,7 @@ public class MainGUI extends Application {
     public static void main(String[] args){
         launch(args);
     }
+    private final TextField inputField = new TextField();
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
     private PhotoManager photoManager = new PhotoManager();
@@ -31,6 +32,7 @@ public class MainGUI extends Application {
     public void start(Stage primaryStage) {
         configure(primaryStage);
         configureRevisionsButton();
+        configureComboBox();
     }
 
     private void configure(Stage stage){
@@ -55,6 +57,7 @@ public class MainGUI extends Application {
                 );
         return root;
     }
+    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge");}
 
     private void configureRevisionsButton() {
         selectPhotoButton.setOnAction(event -> {
