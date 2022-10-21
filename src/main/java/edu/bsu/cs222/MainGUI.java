@@ -23,7 +23,7 @@ public class MainGUI extends Application {
     private final TextField inputField = new TextField();
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
-    private PhotoManager photoManager = new PhotoManager();
+    private final PhotoManager photoManager = new PhotoManager();
 
     private final ComboBox<String> filterSelector = new ComboBox<>();
     //private Photo photoField = new Photo();
@@ -31,8 +31,9 @@ public class MainGUI extends Application {
     @Override
     public void start(Stage primaryStage) {
         configure(primaryStage);
-        configureRevisionsButton();
+        configureSelectPhotoButton();
         configureComboBox();
+        configureDisplayPhotoButton();
     }
 
     private void configure(Stage stage){
@@ -48,6 +49,7 @@ public class MainGUI extends Application {
         VBox root = new VBox();
         root.getChildren().addAll( //
                 new Label("Photo filter"), //
+                inputField,//
                 selectPhotoButton, //
                 new Label("Select a modification:"), //
                 filterSelector, //
@@ -59,7 +61,7 @@ public class MainGUI extends Application {
     }
     private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge");}
 
-    private void configureRevisionsButton() {
+    private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
             try {
                 selectPhoto();
@@ -81,7 +83,7 @@ public class MainGUI extends Application {
 
 
     private void selectPhoto() throws IOException {
-        photoManager.selectPhoto();
+        photoManager.selectPhoto(inputField.getText());
     }
     private void blur() throws IOException{
         photoManager.blurImage();

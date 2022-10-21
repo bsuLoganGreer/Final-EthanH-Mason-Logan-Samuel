@@ -12,7 +12,7 @@ public class PhotoManager {
     //private imageSelector = new ImageSelector();
 
     public PhotoManager(){
-        selectPhoto();
+        selectPhoto("");
     }
 
     public PhotoManager(BufferedImage source){
@@ -20,8 +20,8 @@ public class PhotoManager {
         resetImage();
     }
 
-    public void selectPhoto(){
-        //originalImage = imageSelector.getImage();
+    public void selectPhoto(String dir){
+        //originalImage = imageSelector.getImage(dir);
         resetImage();
 
     }
