@@ -2,6 +2,7 @@ package edu.bsu.cs222;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class PhotoManager {
     private BufferedImage originalImage;
@@ -34,8 +35,8 @@ public class PhotoManager {
     public Image getDisplayImage() {
         return displayImage;
     }
-    public void blurImage(){
-        //blur.blur(displayImage);
+    public void blurImage() throws IOException {
+        //blur.blurImage(displayImage);
     }
 
     public void expandImage(){

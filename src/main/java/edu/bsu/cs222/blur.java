@@ -6,15 +6,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class blur {
+    public static void main(String[] args) throws IOException {
+        blurImage(getPic());
+    }
 
-public BufferedImage getPic() throws IOException {
+public static BufferedImage getPic() throws IOException {
 
     File fin = new File("C:\\Users\\Leffe\\Documents\\freshmen year\\cs 120\\MasonLeffel_project_3");
 
     BufferedImage input = ImageIO.read(fin);
     return input;
 }
-private BufferedImage copyPic() throws IOException{
+private static BufferedImage copyPic() throws IOException{
 
     BufferedImage output = new BufferedImage(
             getPic().getWidth(), getPic().getHeight(),
@@ -22,25 +25,25 @@ private BufferedImage copyPic() throws IOException{
     return output;
 }
 
-public void blurPic() throws IOException{
-            Color color[];
-            int i = 0;
-            int max = 400, rad = 10;
-            int a1 = 0, r1 = 0, g1 = 0, b1 = 0;
-            color = new Color[max];
+public static BufferedImage blurImage(BufferedImage displayImage) throws IOException {
+    Color color[];
+    int i = 0;
+    int max = 400, rad = 10;
+    int a1 = 0, r1 = 0, g1 = 0, b1 = 0;
+    color = new Color[max];
 
-            // blurring of an image
+    // blurring of an image
 
             int x = 1, y = 1, x1, y1, ex = 5, d = 0;
 
             // Running nested for loops for each pixel
             // and blurring it
-            for (x = rad; x < getPic().getHeight() - rad; x++) {
-                for (y = rad; y < getPic().getWidth() - rad; y++) {
+            for (x = rad; x < displayImage.getHeight() - rad; x++) {
+                for (y = rad; y < displayImage.getWidth() - rad; y++) {
                     for (x1 = x - rad; x1 < x + rad; x1++) {
                         for (y1 = y - rad; y1 < y + rad; y1++) {
                             color[i++] = new Color(
-                                    getPic().getRGB(y1, x1));
+                                    displayImage.getRGB(y1, x1));
                         }
                     }
 
@@ -68,22 +71,23 @@ public void blurPic() throws IOException{
                     b1 = b1 / (max);
                     int sum1 = (a1 << 24) + (r1 << 16)
                             + (g1 << 8) + b1;
-                    copyPic().setRGB(y, x, (int)(sum1));
+                   displayImage.setRGB(y, x, sum1);
+
                 }
             }
 
             // Writing the blurred image on the disc where
             // directory is passed as an argument
-            ImageIO.write(
-                    copyPic(), "jpeg",
-                    new File("C:/Downloads/BlurredImage.jpeg"));
-
+             ImageIO.write(copyPic(), "jpeg",new File("C:/Downloads/BlurredImage.jpeg"));
 
 
             // Message to be displayed in the console when
             // program is successfully executed
             System.out.println("Image blurred successfully !");
-        }
+
+
+            return displayImage;
     }
+}
 
 
