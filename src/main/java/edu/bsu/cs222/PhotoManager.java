@@ -36,7 +36,8 @@ public class PhotoManager {
     }
 
     public Image getDisplayImage() throws FileNotFoundException {
-        return new javafx.scene.image.Image(new FileInputStream("/Users/samuelgross/IdeaProjects/Final-Ethan-Mason-Logan-Samuel/src/resources/black_image.png"));
+        String envRootDir = System.getProperty("user.dir");
+        return new javafx.scene.image.Image(new FileInputStream(envRootDir + "/src/resources/black_image.png"));
     }
     public void blurImage() throws IOException {
         //blur.blurImage(displayImage);
