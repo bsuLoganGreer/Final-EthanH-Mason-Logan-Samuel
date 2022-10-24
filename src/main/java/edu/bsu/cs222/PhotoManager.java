@@ -1,7 +1,10 @@
 package edu.bsu.cs222;
 
-import java.awt.*;
+import java.io.FileInputStream;
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class PhotoManager {
@@ -32,8 +35,8 @@ public class PhotoManager {
         displayImage = originalImage;
     }
 
-    public Image getDisplayImage() {
-        return displayImage;
+    public Image getDisplayImage() throws FileNotFoundException {
+        return new javafx.scene.image.Image(new FileInputStream("resources/black_image.png"));
     }
     public void blurImage() throws IOException {
         //blur.blurImage(displayImage);

@@ -9,34 +9,42 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainGUI extends Application {
+    public MainGUI() {
+    }
+
     public static void main(String[] args){
         launch(args);
     }
     private final TextField inputField = new TextField();
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
+    Image image;
     private final PhotoManager photoManager = new PhotoManager();
 
     private final ComboBox<String> filterSelector = new ComboBox<>();
     //private Photo photoField = new Photo();
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
         configure(primaryStage);
         configureSelectPhotoButton();
         configureComboBox();
         configureDisplayPhotoButton();
     }
 
-    private void configure(Stage stage){
+    private void configure(Stage stage) throws FileNotFoundException {
         stage.setTitle("Photo filter");
         stage.setScene(new Scene(createRoot()));
         // will soon need to adjust to photo size
@@ -45,8 +53,14 @@ public class MainGUI extends Application {
         stage.show();
     }
 
-    private Pane createRoot() {
+    private Pane createRoot() throws FileNotFoundException {
         VBox root = new VBox();
+        ImageView imageView = new ImageView(photoManager.getDisplayImage());
+        imageView.setX(50);
+        imageView.setY(25);
+        imageView.setFitHeight(455);
+        imageView.setFitWidth(500);
+        imageView.setPreserveRatio(true);
         root.getChildren().addAll( //
                 new Label("Photo filter"), //
                 inputField,//
@@ -55,7 +69,7 @@ public class MainGUI extends Application {
                 filterSelector, //
                 displayPhotoButton, //
                 new Label("Modified Photo:") //
-                //, photoField //
+                , imageView
                 );
         return root;
     }
