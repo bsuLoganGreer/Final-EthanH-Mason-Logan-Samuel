@@ -9,10 +9,6 @@ import java.io.IOException;
 public class PhotoManager {
     private Image displayImage;
     private String sourceDir;
-    //remove comments once classes are created
-    //private blur = new Blur();
-    //private expandImage = new expandImage();
-    //private imageSelector = new ImageSelector();
 
     public PhotoManager() throws FileNotFoundException {
         sourceDir = "/src/resources/black_image.png";
@@ -25,17 +21,17 @@ public class PhotoManager {
         displayImage = source;
     }
 
+
+    public Image getDisplayImage() throws FileNotFoundException {
+        return displayImage;
+    }
     public void selectPhoto(String fileLocation) throws FileNotFoundException {
         sourceDir = fileLocation;
-        displayImage = getImage(sourceDir);
+        reset();
     }
     public void reset() throws FileNotFoundException {
         displayImage = getImage(sourceDir);
     }
-    public Image getDisplayImage() throws FileNotFoundException {
-        return displayImage;
-    }
-
     public void blurImage() throws IOException {
         blur.blurImage(displayImage);
     }
