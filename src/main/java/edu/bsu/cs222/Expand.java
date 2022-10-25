@@ -24,7 +24,7 @@ public class Expand {
         System.out.println("Resize Successful");
     }
 
-    private static BufferedImage resizeImage(BufferedImage img, int width, int height) {
+    public static BufferedImage resizeImage(BufferedImage img, int width, int height) {
 
         Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

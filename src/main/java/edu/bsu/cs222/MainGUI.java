@@ -14,11 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-import java.awt.*;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainGUI extends Application {
     public MainGUI() throws FileNotFoundException {
@@ -30,11 +27,9 @@ public class MainGUI extends Application {
     private final TextField inputField = new TextField();
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
-    Image image;
     private final PhotoManager photoManager = new PhotoManager();
-
     private final ComboBox<String> filterSelector = new ComboBox<>();
-    //private Photo photoField = new Photo();
+    private ImageView imageView;
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
@@ -55,7 +50,7 @@ public class MainGUI extends Application {
 
     private Pane createRoot() throws FileNotFoundException {
         VBox root = new VBox();
-        ImageView imageView = new ImageView(photoManager.getDisplayImage());
+        updateImageView();
         imageView.setX(50);
         imageView.setY(25);
         imageView.setFitHeight(455);
@@ -73,7 +68,7 @@ public class MainGUI extends Application {
                 );
         return root;
     }
-    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge");}
+    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Reset");}
 
     private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
@@ -87,20 +82,36 @@ public class MainGUI extends Application {
     private void configureDisplayPhotoButton() {
         displayPhotoButton.setOnAction(event -> {
             try {
-                if (filterSelector.getValue().equals("Blur"))
-                    blur();
+                if (filterSelector.getValue().equals("Blur")) {
+                    photoManager.blurImage();
+                }
+                else if (filterSelector.getValue().equals("Enlarge")){
+                    photoManager.expandImage();
+                }
+                else if (filterSelector.getValue().equals("Reset")){
+                    photoManager.reset();
+                }
+                updateImageView();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
+    private void updateImageView() throws FileNotFoundException {
+        imageView = new ImageView(photoManager.getDisplayImage());
+        imageView.setX(50);
+        imageView.setY(25);
+        imageView.setFitHeight(455);
+        imageView.setFitWidth(500);
+        imageView.setPreserveRatio(true);
+    }
+
 
     private void selectPhoto() throws IOException {
         photoManager.selectPhoto(inputField.getText());
-    }
-    private void blur() throws IOException{
-        photoManager.blurImage();
+        updateImageView();
     }
 
 
