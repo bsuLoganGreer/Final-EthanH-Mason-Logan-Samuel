@@ -1,49 +1,51 @@
 package edu.bsu.cs222;
 
 import java.io.FileInputStream;
-import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class PhotoManager {
-    private BufferedImage originalImage;
-    private BufferedImage displayImage;
+    private Image displayImage;
+    private String sourceDir;
     //remove comments once classes are created
     //private blur = new Blur();
     //private expandImage = new expandImage();
     //private imageSelector = new ImageSelector();
 
-    public PhotoManager(){
-        selectPhoto("");
+    public PhotoManager() throws FileNotFoundException {
+        sourceDir = "/src/resources/black_image.png";
+        displayImage = getImage(sourceDir);
+    }
+    public PhotoManager(String fileLocation) throws FileNotFoundException {
+        selectPhoto(fileLocation);
+    }
+    public PhotoManager(Image source){
+        displayImage = source;
     }
 
-    public PhotoManager(BufferedImage source){
-        originalImage = source;
-        resetImage();
+    public void selectPhoto(String fileLocation) throws FileNotFoundException {
+        sourceDir = fileLocation;
+        displayImage = getImage(sourceDir);
     }
-
-    public void selectPhoto(String dir){
-        //originalImage = imageSelector.getImage(dir);
-        resetImage();
-
+    public void reset() throws FileNotFoundException {
+        displayImage = getImage(sourceDir);
     }
-
-    public void resetImage(){
-        //make sure there is a copy made here
-        displayImage = originalImage;
-    }
-
     public Image getDisplayImage() throws FileNotFoundException {
-        String envRootDir = System.getProperty("user.dir");
-        return new javafx.scene.image.Image(new FileInputStream(envRootDir + "/src/resources/black_image.png"));
-    }
-    public void blurImage() throws IOException {
-        //blur.blurImage(displayImage);
+        return displayImage;
     }
 
+    public void blurImage() throws IOException {
+        blur.blurImage(displayImage);
+    }
     public void expandImage(){
-        //expandImage.expand(displayImage);
+        Expand.resizeImage(displayImage);
+    }
+
+
+    private Image getImage(String dir) throws FileNotFoundException{
+        String envRootDir = System.getProperty("user.dir");
+        return new javafx.scene.image.Image(new FileInputStream(envRootDir + dir));
     }
 }
