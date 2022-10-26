@@ -148,7 +148,7 @@ public static BufferedImage blurBuffImage() throws IOException {
 
 
     public javafx.scene.image.Image blur(javafx.scene.image.Image img, int blurFactor) {
-        WritableImage tmp = new WritableImage((int) (img.getWidth()), (int) (img.getWidth()));
+        WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
         PixelReader reader = img.getPixelReader();
         PixelWriter writer = tmp.getPixelWriter();
         for (int x = blurFactor; x < ((int) img.getWidth() - blurFactor); x++) {
