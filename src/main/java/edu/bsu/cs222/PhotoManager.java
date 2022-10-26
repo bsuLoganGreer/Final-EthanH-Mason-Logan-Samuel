@@ -22,21 +22,21 @@ public class PhotoManager {
     }
 
 
-    public Image getDisplayImage() throws FileNotFoundException {
+    public Image getDisplayImage(){
         return displayImage;
     }
     public void selectPhoto(String fileLocation) throws FileNotFoundException {
-        sourceDir = fileLocation;
+        sourceDir = "/src/resources/" + fileLocation;
         reset();
     }
     public void reset() throws FileNotFoundException {
         displayImage = getImage(sourceDir);
     }
     public void blurImage() throws IOException {
-        blur.blurImage(displayImage);
+        //blur.blurImage(displayImage);
     }
     public void expandImage(){
-        Expand.resizeImage(displayImage);
+        displayImage = new Expand().resizeImage(displayImage, 2);
     }
 
 
