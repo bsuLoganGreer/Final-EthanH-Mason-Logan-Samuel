@@ -99,6 +99,11 @@ public class MainGUI extends Application {
         });
     }
 
+    private void selectPhoto() throws IOException {
+        photoManager.selectPhoto(inputField.getText());
+        updateImageView();
+    }
+
     private void updateImageView() throws FileNotFoundException {
         imageView = new ImageView(photoManager.getDisplayImage());
         imageView.setX(50);
@@ -109,10 +114,6 @@ public class MainGUI extends Application {
     }
 
 
-    private void selectPhoto() throws IOException {
-        photoManager.selectPhoto(inputField.getText());
-        updateImageView();
-    }
 
 
 
