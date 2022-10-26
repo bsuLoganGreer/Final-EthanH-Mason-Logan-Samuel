@@ -42,7 +42,7 @@ public class Expand {
 
     }
     public javafx.scene.image.Image resizeImage(javafx.scene.image.Image img, int resizeFactor){
-        WritableImage tmp = new WritableImage((int)img.getWidth()*resizeFactor, (int)img.getWidth()*resizeFactor);
+        WritableImage tmp = new WritableImage((int)img.getWidth()*resizeFactor, (int)img.getHeight()*resizeFactor);
         PixelReader reader = img.getPixelReader();
         PixelWriter writer = tmp.getPixelWriter();
         for (int x = 0;x<(int)img.getWidth(); x++){
