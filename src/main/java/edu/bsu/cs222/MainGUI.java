@@ -44,8 +44,8 @@ public class MainGUI extends Application {
         stage.setTitle("Photo filter");
         stage.setScene(new Scene(createRoot()));
         // will soon need to adjust to photo size
-        stage.setWidth(500);
-        stage.setHeight(650);
+        stage.setWidth(1000);
+        stage.setHeight(1300);
         stage.show();
     }
 
@@ -61,6 +61,7 @@ public class MainGUI extends Application {
         selectPhotoButton.setOnAction(event -> {
             try {
                 selectPhoto();
+                setRoot();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -79,6 +80,7 @@ public class MainGUI extends Application {
                     photoManager.reset();
                 }
                 updateImageView();
+                setRoot();
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
