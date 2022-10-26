@@ -1,31 +1,74 @@
 package edu.bsu.cs222;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static javax.imageio.ImageIO.read;
+
 public class blur {
     public static void main(String[] args) throws IOException {
-        blurImage(getPic());
+        getPic();
     }
 
+
 public static BufferedImage getPic() throws IOException {
+    Image input = null;
+    try {
 
-    File fin = new File("C:\\Users\\Leffe\\Documents\\freshmen year\\cs 120\\MasonLeffel_project_3");
+        Image fin = new Image() {
+            @Override
+            public int getWidth(ImageObserver observer) {
+                return 0;
+            }
 
-    BufferedImage input = ImageIO.read(fin);
-    return input;
+            @Override
+            public int getHeight(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public ImageProducer getSource() {
+                return null;
+            }
+
+            @Override
+            public Graphics getGraphics() {
+                return null;
+            }
+
+            @Override
+            public Object getProperty(String name, ImageObserver observer) {
+                return null;
+            }
+        };
+
+        input = read((ImageInputStream) fin);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return (BufferedImage) input;
 }
 private static BufferedImage copyPic() throws IOException{
 
-    BufferedImage output = new BufferedImage(
-            getPic().getWidth(), getPic().getHeight(),
+    Image output = new BufferedImage(
+            getPic().getWidth((ImageObserver) getPic()), getPic().getHeight((ImageObserver) getPic()),
             BufferedImage.TYPE_INT_RGB);
-    return output;
+    return (BufferedImage) output;
 }
 
-public static BufferedImage blurImage(BufferedImage displayImage) throws IOException {
+
+public static BufferedImage blurBuffImage() throws IOException {
     Color color[];
     int i = 0;
     int max = 400, rad = 10;
@@ -34,16 +77,16 @@ public static BufferedImage blurImage(BufferedImage displayImage) throws IOExcep
 
     // blurring of an image
 
-            int x = 1, y = 1, x1, y1, ex = 5, d = 0;
+            int x=0, y=0, x1, y1, ex = 5, d;
 
             // Running nested for loops for each pixel
             // and blurring it
-            for (x = rad; x < displayImage.getHeight() - rad; x++) {
-                for (y = rad; y < displayImage.getWidth() - rad; y++) {
+            for (x = rad; x < getPic().getHeight((ImageObserver) getPic()) - rad; x++) {
+                for (y = rad; y < getPic().getWidth((ImageObserver) getPic()) - rad; y++) {
                     for (x1 = x - rad; x1 < x + rad; x1++) {
                         for (y1 = y - rad; y1 < y + rad; y1++) {
                             color[i++] = new Color(
-                                    displayImage.getRGB(y1, x1));
+                                    getPic().getRGB(x1, y1));
                         }
                     }
 
@@ -71,14 +114,14 @@ public static BufferedImage blurImage(BufferedImage displayImage) throws IOExcep
                     b1 = b1 / (max);
                     int sum1 = (a1 << 24) + (r1 << 16)
                             + (g1 << 8) + b1;
-                   displayImage.setRGB(y, x, sum1);
+                   copyPic().setRGB(y, x, sum1);
 
                 }
             }
 
             // Writing the blurred image on the disc where
             // directory is passed as an argument
-             ImageIO.write(copyPic(), "jpeg",new File("C:/Downloads/BlurredImage.jpeg"));
+             ImageIO.write((RenderedImage) copyPic(), "jpeg",new File("C:/Downloads/BlurredImage.jpeg"));
 
 
             // Message to be displayed in the console when
@@ -86,7 +129,20 @@ public static BufferedImage blurImage(BufferedImage displayImage) throws IOExcep
             System.out.println("Image blurred successfully !");
 
 
-            return displayImage;
+            return (BufferedImage) copyPic();
+    }
+    private static Object blr() throws IOException {
+        WritableImage wr = null;
+        blurBuffImage();
+        wr = new WritableImage(blurBuffImage().getWidth(), blurBuffImage().getHeight());
+        PixelWriter pw = wr.getPixelWriter();
+        for (int x = 0; x < blurBuffImage().getWidth(); x++) {
+            for (int y = 0; y < blurBuffImage().getHeight(); y++) {
+                pw.setArgb(x, y, blurBuffImage().getRGB(x, y));
+            }
+        }
+
+        return new ImageView(wr).getImage();
     }
 }
 
