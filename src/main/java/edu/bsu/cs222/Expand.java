@@ -18,15 +18,17 @@ public class Expand {
         Scanner sc = new Scanner (System.in);
         int width ,height;
         System.out.println("Enter Height and width of image");
-        height = sc.nextInt();
-        width = sc.nextInt();
         File input = new File("C:\\Users\\jayfe\\cs224_labs\\Test.jpg");
         BufferedImage image = ImageIO.read(input);
+
+        height = image.getHeight() * 2;
+        width = image.getWidth() * 2;
         BufferedImage resized = resizeImage(image, width,height);
 
         File output = new File("C:\\Users\\jayfe\\cs224_labs\\Test5.png");
         ImageIO.write(resized, "png", output);
         System.out.println("Resize Successful");
+        System.out.println("Image size" + height);
     }
 
     public static BufferedImage resizeImage(BufferedImage img, int width, int height) {
