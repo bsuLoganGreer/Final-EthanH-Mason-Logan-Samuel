@@ -97,8 +97,6 @@ public class MainGUI extends Application {
         imageView = new ImageView(photoManager.getDisplayImage());
         imageView.setX(50);
         imageView.setY(25);
-        imageView.setFitHeight(455);
-        imageView.setFitWidth(500);
         imageView.setPreserveRatio(true);
     }
 
