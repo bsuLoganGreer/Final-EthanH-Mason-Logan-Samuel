@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -30,6 +29,7 @@ public class MainGUI extends Application {
     private final PhotoManager photoManager = new PhotoManager();
     private final ComboBox<String> filterSelector = new ComboBox<>();
     private ImageView imageView;
+    Text errorMessage = new Text("");
     VBox root;
 
     @Override
@@ -62,8 +62,8 @@ public class MainGUI extends Application {
             try {
                 selectPhoto();
                 setRoot();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                errorMessage.setText("Enter a valid file name. Make sure the image file is stored in resources folder.");
             }
         });
     }
@@ -101,10 +101,11 @@ public class MainGUI extends Application {
     }
 
     private void setRoot(){
+        errorMessage.setText("");
         root.getChildren().setAll( //
-                new Label("Photo filter"), //
                 inputField,//
                 selectPhotoButton, //
+                errorMessage, //
                 new Label("Select a modification:"), //
                 filterSelector, //
                 displayPhotoButton, //
