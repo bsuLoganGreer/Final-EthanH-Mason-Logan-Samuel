@@ -30,6 +30,7 @@ public class MainGUI extends Application {
     private final PhotoManager photoManager = new PhotoManager();
     private final ComboBox<String> filterSelector = new ComboBox<>();
     private ImageView imageView;
+    VBox root;
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
@@ -49,23 +50,9 @@ public class MainGUI extends Application {
     }
 
     private Pane createRoot() throws FileNotFoundException {
-        VBox root = new VBox();
+        root = new VBox();
         updateImageView();
-        imageView.setX(50);
-        imageView.setY(25);
-        imageView.setFitHeight(455);
-        imageView.setFitWidth(500);
-        imageView.setPreserveRatio(true);
-        root.getChildren().addAll( //
-                new Label("Photo filter"), //
-                inputField,//
-                selectPhotoButton, //
-                new Label("Select a modification:"), //
-                filterSelector, //
-                displayPhotoButton, //
-                new Label("Modified Photo:") //
-                , imageView
-                );
+        setRoot();
         return root;
     }
     private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Reset");}
@@ -113,7 +100,18 @@ public class MainGUI extends Application {
         imageView.setPreserveRatio(true);
     }
 
-
+    private void setRoot(){
+        root.getChildren().setAll( //
+                new Label("Photo filter"), //
+                inputField,//
+                selectPhotoButton, //
+                new Label("Select a modification:"), //
+                filterSelector, //
+                displayPhotoButton, //
+                new Label("Modified Photo:") //
+                , imageView
+        );
+    }
 
 
 
