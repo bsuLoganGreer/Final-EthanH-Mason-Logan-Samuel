@@ -103,6 +103,7 @@ public class MainGUI extends Application {
     private void setRoot(){
         errorMessage.setText("");
         root.getChildren().setAll( //
+                new Label("Enter a file name:"),
                 inputField,//
                 selectPhotoButton, //
                 errorMessage, //
