@@ -33,7 +33,7 @@ public class PhotoManager {
         displayImage = getImage(sourceDir);
     }
     public void blurImage() throws IOException {
-        displayImage = new blur().blur(displayImage, 3);
+        displayImage = new Blur().blur(displayImage, 3);
     }
     public void expandImage(){
         displayImage = new Expand().resizeImage(displayImage, 2);
