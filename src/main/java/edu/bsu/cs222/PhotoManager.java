@@ -40,7 +40,7 @@ public class PhotoManager {
     }
 
 
-    private Image getImage(String dir) throws FileNotFoundException{
+    public Image getImage(String dir) throws FileNotFoundException{
         String envRootDir = System.getProperty("user.dir");
         return new javafx.scene.image.Image(new FileInputStream(envRootDir + dir));
     }
