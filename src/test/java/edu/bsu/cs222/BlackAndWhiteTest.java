@@ -27,4 +27,26 @@ public class BlackAndWhiteTest {
         }
         Assertions.assertFalse(containsColor);
     }
+
+    @Test
+    public void colorCorrect() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
+        PixelReader pixels = testImage.getPixelReader();
+        Image blackAndWhite = new BlackAndWhite().blackAndWhite(testImage);
+        PixelReader bwpixels = blackAndWhite.getPixelReader();
+
+        boolean containsColor = false;
+        for (int x = 0; x < testImage.getWidth(); x++) {
+            for (int y = 0; y < testImage.getHeight(); y++) {
+                Color sample1 = pixels.getColor(x, y);
+                Color sample2 = bwpixels.getColor(x, y);
+                if (sample1.getBrightness()<0.5 && !sample2.equals(Color.BLACK)){
+                    containsColor = true;
+                }
+                if (sample1.getBrightness()>=0.5 && !sample2.equals(Color.WHITE))
+                    containsColor = true;
+            }
+        }
+        Assertions.assertFalse(containsColor);
+    }
 }
