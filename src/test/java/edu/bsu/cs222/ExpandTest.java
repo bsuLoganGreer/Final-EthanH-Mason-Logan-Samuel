@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import static java.lang.Math.abs;
-
 public class ExpandTest {
 
     @Test
