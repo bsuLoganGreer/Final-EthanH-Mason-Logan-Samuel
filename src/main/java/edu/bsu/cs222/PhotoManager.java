@@ -36,7 +36,7 @@ public class PhotoManager {
         displayImage = new Blur().blur(displayImage, 3);
     }
     public void expandImage(){
-        displayImage = new Expand().resizeImage(displayImage, 2);
+        displayImage = new ResizeImage().expand(displayImage, 2);
     }
     public void blackAndWhiteImage(){
         displayImage = new BlackAndWhite().blackAndWhite(displayImage);
