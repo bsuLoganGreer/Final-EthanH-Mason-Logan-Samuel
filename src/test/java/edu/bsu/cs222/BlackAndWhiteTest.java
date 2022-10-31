@@ -40,10 +40,12 @@ public class BlackAndWhiteTest {
             for (int y = 0; y < testImage.getHeight(); y++) {
                 Color sample1 = pixels.getColor(x, y);
                 Color sample2 = bwpixels.getColor(x, y);
-                if (sample1.getBrightness()<0.5 && !sample2.equals(Color.BLACK)){
+                if (sample1.getBrightness() <= 0.75 && sample1.getBrightness() >= 0.25
+                        && !sample2.equals(Color.BLACK)){
                     containsColor = true;
                 }
-                if (sample1.getBrightness()>=0.5 && !sample2.equals(Color.WHITE))
+                if ((sample1.getBrightness() > 0.75 || sample1.getBrightness() < 0.25)
+                        && !sample2.equals(Color.WHITE))
                     containsColor = true;
             }
         }

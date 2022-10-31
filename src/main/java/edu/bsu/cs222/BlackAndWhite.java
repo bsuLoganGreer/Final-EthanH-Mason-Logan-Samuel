@@ -15,10 +15,10 @@ public class BlackAndWhite {
         for (int x = 0; x < ((int) img.getWidth()); x++) {
             for (int y = 0; y < ((int) img.getHeight()); y++) {
                 Color sourceColor = reader.getColor(x, y);
-                if (sourceColor.getBrightness() >= 0.5)
-                    writer.setColor(x, y, Color.WHITE);
-                if (sourceColor.getBrightness() < 0.5)
+                if (sourceColor.getBrightness() <= 0.75 && sourceColor.getBrightness() >= 0.25)
                     writer.setColor(x, y, Color.BLACK);
+                if (sourceColor.getBrightness() > 0.75 || sourceColor.getBrightness() < 0.25)
+                    writer.setColor(x, y, Color.WHITE);
             }
         }
         return tmp;
