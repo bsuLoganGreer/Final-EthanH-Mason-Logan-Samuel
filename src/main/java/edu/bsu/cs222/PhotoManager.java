@@ -11,7 +11,7 @@ public class PhotoManager {
     private String sourceDir;
 
     public PhotoManager() throws FileNotFoundException {
-        sourceDir = "/src/resources/black_image.png";
+        sourceDir = "/src/resources/test.png";
         displayImage = getImage(sourceDir);
     }
     public PhotoManager(String fileLocation) throws FileNotFoundException {
@@ -53,5 +53,8 @@ public class PhotoManager {
     public Image getImage(String dir) throws FileNotFoundException{
         String envRootDir = System.getProperty("user.dir");
         return new javafx.scene.image.Image(new FileInputStream(envRootDir + dir));
+    }
+    public void downLoud() throws IOException {
+        new Download(displayImage);
     }
 }

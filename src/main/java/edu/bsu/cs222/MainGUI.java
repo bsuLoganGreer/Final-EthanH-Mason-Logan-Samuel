@@ -45,7 +45,7 @@ public class MainGUI extends Application {
         stage.setScene(new Scene(createRoot()));
         // will soon need to adjust to photo size
         stage.setWidth(1000);
-        stage.setHeight(1300);
+        stage.setHeight(500);
         stage.show();
     }
 
