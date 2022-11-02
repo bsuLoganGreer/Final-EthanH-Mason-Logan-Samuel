@@ -38,6 +38,9 @@ public class PhotoManager {
     public void expandImage(){
         displayImage = new ResizeImage().expand(displayImage, 2);
     }
+    public void shrinkImage(){
+        displayImage = new ResizeImage().shrink(displayImage, 2);
+    }
     public void blackAndWhiteImage(){
         displayImage = new BlackAndWhite().blackAndWhite(displayImage);
     }

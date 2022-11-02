@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javafx.scene.paint.Color;
 
 import static java.lang.Math.abs;
@@ -45,4 +47,17 @@ public class BlurTest {
 
         Assertions.assertTrue(differenceSumTest > differenceSumBlur);
     }
+
+    @Test
+    public void checkGrey() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/blurTest.png"));
+        Image blurredImage = new Blur().blur(testImage, 1);
+        PixelReader blurredPixels = blurredImage.getPixelReader();
+
+        Color Pixel = blurredPixels.getColor(1, 1);
+
+        Assertions.assertEquals(Pixel, Color.rgb(113, 113, 113));
+    }
+
+
 }
