@@ -8,9 +8,19 @@ import java.io.File;
 import java.io.IOException;
 
 public class Download {
-    public void download(Image displayImage, String fileName) throws IOException {
 
-        ImageIO.write(SwingFXUtils.fromFXImage(displayImage, null), "png", new File(System.getProperty("user.dir") +
-                "/src/resources/" + "modified_" + fileName));
+    public void download(Image displayImage, String fileDirectory) throws IOException {
+
+        ImageIO.write(SwingFXUtils.fromFXImage(displayImage, null), "png", new File(getModifiedFileDirectory(fileDirectory)));
+    }
+
+    public String getModifiedFileDirectory(String inputDir){
+        String tmp = "";
+        if (inputDir.contains(".")){
+            tmp += inputDir.substring(0,inputDir.indexOf("."));
+            tmp += "_modified";
+            tmp += inputDir.substring(inputDir.indexOf("."));
+        }
+        return tmp;
     }
 }

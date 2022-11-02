@@ -56,7 +56,7 @@ public class MainGUI extends Application {
         setRoot();
         return root;
     }
-    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Create B&W Image", "Reset");}
+    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Create B&W Image", "Reset", "Download");}
 
     private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
@@ -86,6 +86,9 @@ public class MainGUI extends Application {
                 }
                 else if (filterSelector.getValue().equals("Shrink")){
                     photoManager.shrinkImage();
+                }
+                else if (filterSelector.getValue().equals("Download")){
+                    photoManager.downloadImage();
                 }
                 updateImageView();
                 setRoot();

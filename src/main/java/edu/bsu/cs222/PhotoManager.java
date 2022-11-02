@@ -23,7 +23,7 @@ public class PhotoManager {
         displayImage = new Image(new FileInputStream(fileLocation));
     }
     public void blurImage() throws IOException {
-        displayImage = new Blur().blur(displayImage, 3);
+        displayImage = new Blur().blur(displayImage, 1);
     }
     public void expandImage(){
         displayImage = new ResizeImage().expand(displayImage, 2);
@@ -36,6 +36,9 @@ public class PhotoManager {
     }
     public void stylizeImage(){
         displayImage = new Stylize().stylize(displayImage);
+    }
+    public void downloadImage() throws IOException {
+        new Download().download(displayImage, sourceDir);
     }
 
     public void downLoad() throws IOException {

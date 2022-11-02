@@ -11,10 +11,11 @@ import java.io.IOException;
 public class DownloadTest {
     @Test
     public void testDownload() throws IOException {
-        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
+        String testDirectory = System.getProperty("user.dir") + "/src/resources/test.png";
+        Image testImage = new Image(new FileInputStream(testDirectory));
         PixelReader pixels = testImage.getPixelReader();
-        new Download().download(testImage, "test.png");
-        Image downloadedImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/modified_test.png"));
+        new Download().download(testImage, testDirectory);
+        Image downloadedImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test_modified.png"));
         PixelReader copypixels = downloadedImage.getPixelReader();
 
         for (int x = 0; x < testImage.getWidth(); x++) {
@@ -23,5 +24,13 @@ public class DownloadTest {
             }
         }
 
+    }
+
+    @Test
+    public void testGetModifiedFileDirectory(){
+        String testDirectory = System.getProperty("user.dir") + "/src/resources/test.png";
+        String returnedDirectory = new Download().getModifiedFileDirectory(testDirectory);
+
+        Assertions.assertEquals(System.getProperty("user.dir") + "/src/resources/test_modified.png", returnedDirectory);
     }
 }
