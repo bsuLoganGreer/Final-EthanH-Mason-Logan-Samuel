@@ -61,7 +61,8 @@ public class MainGUI extends Application {
     private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
             try {
-                selectPhoto();
+                photoManager.selectPhoto(inputField.getText());
+                updateImageView();
                 setRoot();
             } catch (Exception e) {
                 errorMessage.setText("Enter a valid file name. Make sure the image file is stored in resources folder.");
@@ -78,7 +79,7 @@ public class MainGUI extends Application {
                     photoManager.expandImage();
                 }
                 else if (filterSelector.getValue().equals("Reset")){
-                    photoManager.reset();
+                    photoManager.selectPhoto(inputField.getText());
                 }
                 else if (filterSelector.getValue().equals("Create B&W Image")){
                     photoManager.blackAndWhiteImage();
