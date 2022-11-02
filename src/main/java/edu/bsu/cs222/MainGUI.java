@@ -34,6 +34,7 @@ public class MainGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
+        inputField.setText(new FilePicker().selectFile(primaryStage));
         configure(primaryStage);
         configureSelectPhotoButton();
         configureComboBox();
