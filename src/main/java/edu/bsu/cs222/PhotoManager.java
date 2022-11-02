@@ -11,7 +11,7 @@ public class PhotoManager {
     private String sourceDir;
 
     public PhotoManager() throws FileNotFoundException {
-        sourceDir = "/src/resources/test.png";
+        sourceDir = System.getProperty("user.dir") + "/src/resources/black_image.png";
         displayImage = getImage(sourceDir);
     }
     public PhotoManager(String fileLocation) throws FileNotFoundException {
@@ -26,7 +26,7 @@ public class PhotoManager {
         return displayImage;
     }
     public void selectPhoto(String fileLocation) throws FileNotFoundException {
-        sourceDir = "/src/resources/" + fileLocation;
+        sourceDir = fileLocation;
         reset();
     }
     public void reset() throws FileNotFoundException {
@@ -38,10 +38,6 @@ public class PhotoManager {
     public void expandImage(){
         displayImage = new ResizeImage().expand(displayImage, 2);
     }
-
-    public void shrinkImage(){
-        displayImage = new ResizeImage().shrink(displayImage, 2);
-    }
     public void blackAndWhiteImage(){
         displayImage = new BlackAndWhite().blackAndWhite(displayImage);
     }
@@ -50,11 +46,7 @@ public class PhotoManager {
     }
 
 
-    public Image getImage(String dir) throws FileNotFoundException{
-        String envRootDir = System.getProperty("user.dir");
-        return new javafx.scene.image.Image(new FileInputStream(envRootDir + dir));
-    }
-    public void downLoud() throws IOException {
-        new Download(displayImage);
+    public Image getImage(String dir) throws FileNotFoundException {
+        return new javafx.scene.image.Image(new FileInputStream(dir));
     }
 }
