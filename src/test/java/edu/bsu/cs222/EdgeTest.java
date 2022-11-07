@@ -30,12 +30,17 @@ public class EdgeTest {
     }
 
     @Test
-    public void checkSetBlack(){
-
-
+    public void checkSetBlack() {
+        Color test1 = Color.rgb(0,0,0);
+        Color test2 = Color.rgb(255,255,255);
+        Assertions.assertTrue(new Edge().shouldSetBlack( test1, test2, 0.5));
     }
+
+
     @Test
     public void checkSetWhite(){
-
+        Color test1 = Color.rgb(0,0,0);
+        Color test2 = Color.rgb(0,0,0);
+        Assertions.assertFalse(new Edge().shouldSetBlack( test1, test2, 0.5));
     }
 }
