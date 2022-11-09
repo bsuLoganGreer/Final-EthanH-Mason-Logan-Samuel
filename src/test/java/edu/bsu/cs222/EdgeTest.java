@@ -18,8 +18,9 @@ public class EdgeTest {
         PixelReader edgedPixels = edgedImage.getPixelReader();
 
         for (int x = 0; x < testImage.getWidth() - 2; x++) {
-            for (int y = 0; y < testImage.getHeight(); y++) {
-                if (new Edge().shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x + 1, y), 0.5)){
+            for (int y = 0; y < testImage.getHeight() - 1; y++) {
+                if (new Edge().shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x + 1, y), 0.15) ||
+                        new Edge().shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x, y+1), 0.15)){
                     Assertions.assertEquals(Color.BLACK, edgedPixels.getColor(x, y));
                 }
                 else{

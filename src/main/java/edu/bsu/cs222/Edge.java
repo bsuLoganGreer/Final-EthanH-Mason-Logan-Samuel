@@ -16,8 +16,9 @@ public class Edge {
 
 
         for (int x = 0; x < image.getWidth() - 2; x++) {
-            for (int y = 0; y < image.getHeight(); y++) {
-                if (shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x + 1, y), 0.5)){
+            for (int y = 0; y < image.getHeight() - 1; y++) {
+                if (shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x + 1, y), 0.15) ||
+                        shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x, y+1), 0.15)){
                     writer.setColor(x,y,Color.BLACK);
                 }
                 else{
