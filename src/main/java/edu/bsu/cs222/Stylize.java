@@ -10,11 +10,11 @@ public class Stylize {
 
     //For testing purposes we will use this split complementary pair
     //main: #ff782f, or (255, 120, 47)
-    //secondary: #592fff or (89, 47, 255)
-    //tertiary: #2fff82 or (47, 255, 130)
+    //secondary: #2f4eff or (47, 78, 255)
+    //tertiary: #2fffe0 or (47, 255, 224)
     private Color primary = Color.rgb(255, 120, 47);
-    private Color secondary = Color.rgb(89, 47, 255);
-    private Color tertiary = Color.rgb(47, 255, 130);
+    private Color secondary = Color.rgb(47, 78, 255);
+    private Color tertiary = Color.rgb(47, 255, 224);
 
     public Image stylize(Image img){
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
