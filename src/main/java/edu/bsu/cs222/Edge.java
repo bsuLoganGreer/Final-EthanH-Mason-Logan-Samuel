@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 
 public class Edge {
 
-    public javafx.scene.image.Image edge(javafx.scene.image.Image image) throws FileNotFoundException {
+    public Image edge(Image image) throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
         PixelReader pixels = testImage.getPixelReader();
         WritableImage tmp = new WritableImage(image.getPixelReader(), (int) image.getWidth(), (int)image.getHeight());
@@ -33,8 +33,8 @@ public class Edge {
 
     public boolean shouldSetBlack(Color color, Color color1, double v) {
         double sumColor1 = color.getRed();
-        sumColor1 += (int) color.getGreen() * 255;
-        sumColor1 += (int) color.getBlue() *255;
+        sumColor1 += color.getGreen();
+        sumColor1 += color.getBlue();
 
         double sumColor2 = color1.getRed();
         sumColor2 += color1.getBlue();
