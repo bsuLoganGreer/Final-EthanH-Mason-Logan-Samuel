@@ -9,25 +9,23 @@ import javafx.scene.paint.Color;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import static java.lang.Math.abs;
-
 public class Edge {
 
     public javafx.scene.image.Image edge(javafx.scene.image.Image image) throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
-        PixelReader reader = testImage.getPixelReader();
+        PixelReader pixels = testImage.getPixelReader();
         WritableImage tmp = new WritableImage(image.getPixelReader(), (int) image.getWidth(), (int)image.getHeight());
         PixelWriter writer = tmp.getPixelWriter();
 
 
-        int original = 0;
         for (int x = 0; x < testImage.getWidth() - 2; x++) {
             for (int y = 0; y < testImage.getHeight(); y++) {
-                Color sample1 = reader.getColor(x, y);
-                Color sample2 = reader.getColor(x + 1, y);
-                original+= abs((int)(sample1.getRed() * 10.0)- (int)(sample2.getRed() * 10.0));
-                writer.setArgb(x,y,original);
-
+                if (shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x + 1, y), 0.5)){
+                    writer.setColor(x,y,Color.BLACK);
+                }
+                else{
+                    writer.setColor(x,y,Color.WHITE);
+                }
             }
         }
         return tmp;
