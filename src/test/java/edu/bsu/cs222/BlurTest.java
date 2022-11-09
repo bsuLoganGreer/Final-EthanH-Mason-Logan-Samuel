@@ -17,7 +17,7 @@ public class BlurTest {
     @Test
     public void checkSameSize() throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
-        Image blurredImage = new Blur().blur(testImage, 3);
+        Image blurredImage = new Blur().blur(testImage);
 
         Assertions.assertEquals(testImage.getWidth(), blurredImage.getWidth());
         Assertions.assertEquals(testImage.getHeight(), blurredImage.getHeight());
@@ -27,7 +27,7 @@ public class BlurTest {
     public void averageRedColorDifferenceDecreases() throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
         PixelReader pixels = testImage.getPixelReader();
-        Image blurredImage = new Blur().blur(testImage, 3);
+        Image blurredImage = new Blur().blur(testImage);
         PixelReader blurredPixels = blurredImage.getPixelReader();
 
         int differenceSumTest = 0;
@@ -50,7 +50,7 @@ public class BlurTest {
     @Test
     public void checkGrey() throws IOException{
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/blurTest.png"));
-        Image blurredImage = new Blur().blur(testImage, 1);
+        Image blurredImage = new Blur().blur(testImage);
         PixelReader blurredPixels = blurredImage.getPixelReader();
 
 
