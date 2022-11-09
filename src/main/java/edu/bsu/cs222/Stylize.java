@@ -20,6 +20,18 @@ public class Stylize {
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
         PixelReader reader = img.getPixelReader();
         PixelWriter writer = tmp.getPixelWriter();
+        for (int x = 0; x < ((int) img.getWidth()); x++) {
+            for (int y = 0; y < ((int) img.getHeight()); y++) {
+                Color sourceColor = reader.getColor(x, y);
+                if (shouldSetPrimary(sourceColor))
+                    writer.setColor(x, y, primary);
+                if (shouldSetSecondary(sourceColor))
+                    writer.setColor(x, y, secondary);
+                if (shouldSetTertiary(sourceColor))
+                    writer.setColor(x, y, tertiary);
+            }
+        }
+
         return tmp;
     }
     public Image stylize(Image image, Color primaryColor, Color secondaryColor, Color tertiaryColor){
