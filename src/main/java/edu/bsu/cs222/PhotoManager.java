@@ -34,6 +34,9 @@ public class PhotoManager {
     public void blackAndWhiteImage(){
         displayImage = new BlackAndWhite().blackAndWhite(displayImage);
     }
+    public void edgeImage(){
+        displayImage = new Edge().edge(displayImage);
+    }
     public void stylizeImage(){
         displayImage = new Stylize().stylize(displayImage);
     }
