@@ -22,6 +22,7 @@ public class ResizeImage {
                 }
             }
         }
+
         return tmp;
     }
 
@@ -37,6 +38,7 @@ public class ResizeImage {
 
             }
         }
+
         return tmp;
     }
 }

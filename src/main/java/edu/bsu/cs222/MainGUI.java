@@ -12,7 +12,6 @@ import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

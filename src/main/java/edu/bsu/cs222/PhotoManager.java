@@ -22,9 +22,11 @@ public class PhotoManager {
         sourceDir = fileLocation;
         displayImage = new Image(new FileInputStream(fileLocation));
     }
+
     public void blurImage() throws IOException {
         displayImage = new Blur().blur(displayImage);
     }
+
     public void expandImage(){
         displayImage = new ResizeImage().expand(displayImage, 2);
     }
