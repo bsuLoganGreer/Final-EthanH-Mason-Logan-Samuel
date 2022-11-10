@@ -37,7 +37,6 @@ public class EdgeTest {
         Assertions.assertTrue(new Edge().shouldSetBlack( test1, test2, 0.5));
     }
 
-
     @Test
     public void checkSetWhite(){
         Color test1 = Color.rgb(0,0,0);
