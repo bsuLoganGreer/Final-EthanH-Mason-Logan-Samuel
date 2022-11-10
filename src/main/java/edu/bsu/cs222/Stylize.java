@@ -23,11 +23,11 @@ public class Stylize {
         for (int x = 0; x < ((int) img.getWidth()); x++) {
             for (int y = 0; y < ((int) img.getHeight()); y++) {
                 Color sourceColor = reader.getColor(x, y);
-                if (shouldSetPrimary(sourceColor))
+                if (SetPrimary(sourceColor))
                     writer.setColor(x, y, primary);
-                if (shouldSetSecondary(sourceColor))
+                if (SetSecondary(sourceColor))
                     writer.setColor(x, y, secondary);
-                if (shouldSetTertiary(sourceColor))
+                if (SetTertiary(sourceColor))
                     writer.setColor(x, y, tertiary);
             }
         }
@@ -41,15 +41,15 @@ public class Stylize {
         return stylize(image);
     }
 
-    public boolean shouldSetPrimary(Color color) {
+    public boolean SetPrimary(Color color) {
         return color.getBrightness() <= 0.75 && color.getBrightness() >= 0.25;
     }
 
-    public boolean shouldSetTertiary(Color color) {
+    public boolean SetTertiary(Color color) {
         return color.getBrightness() > 0.75;
     }
 
-    public boolean shouldSetSecondary(Color color) {
+    public boolean SetSecondary(Color color) {
         return color.getBrightness() < .25;
     }
 }

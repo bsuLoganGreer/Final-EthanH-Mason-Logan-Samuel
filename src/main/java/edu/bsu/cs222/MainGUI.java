@@ -45,8 +45,8 @@ public class MainGUI extends Application {
         stage.setTitle("Photo filter");
         stage.setScene(new Scene(createRoot()));
         // will soon need to adjust to photo size
-        stage.setWidth(2000);
-        stage.setHeight(1000);
+        stage.setWidth(1000);
+        stage.setHeight(500);
         stage.show();
     }
 

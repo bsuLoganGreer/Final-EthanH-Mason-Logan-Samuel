@@ -2,6 +2,9 @@
 Final Project verson 0.1.0
 by Samuel Gross, Ethan Hooper, Mason Leffel, and Logan Greer
 
+Instructions:
+Type test.png into enter a file name and hit select photo. From there you just use the dropdown and hit apply to apply the filters. 
+
 To run this project, use the Gradle run function
 
 For this iteration, if the user wishes to use their own photo they can simply place it in the resources folder of the project
