@@ -35,7 +35,6 @@ public class Blur {
         averageGreen =averageGreen/25.0;
         averageBlue = averageBlue/25.0;
         return new Color(averageRed, averageGreen, averageBlue, 1.0);
-
     }
 }
 

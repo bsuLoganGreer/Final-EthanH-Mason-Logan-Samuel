@@ -16,7 +16,6 @@ public class ColorWheel{
 
     public Color getFirstComplementaryColor(Color color){
         return color;
-
     }
 
     public Color getSecondComplementaryColor(Color color) {

@@ -48,14 +48,65 @@ public class BlurTest {
     }
 
     @Test
-    public void checkGrey() throws IOException{
-        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/blurTest.png"));
+    public void checkMiddle() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5Blur.png"));
         Image blurredImage = new Blur().blur(testImage);
         PixelReader blurredPixels = blurredImage.getPixelReader();
 
-        Color Pixel = blurredPixels.getColor(1, 1);
 
-        Assertions.assertEquals(Pixel, Color.rgb(113, 113, 113));
+        Color Pixel = blurredPixels.getColor(2, 2);
+
+        Assertions.assertEquals(Pixel, Color.rgb(51, 51, 51));
+    }
+
+    @Test
+    public void checkAverageCorner() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5Blur.png"));
+        Image blurredImage = new Blur().blur(testImage);
+        PixelReader blurredPixels = blurredImage.getPixelReader();
+
+        Color Pixel =blurredPixels.getColor(0, 0);
+        Assertions.assertEquals(Pixel, Color.rgb(0, 0, 0));
+    }
+
+    @Test
+    public void checkAverageSide() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5Blur.png"));
+        Image blurredImage = new Blur().blur(testImage);
+        PixelReader blurredPixels = blurredImage.getPixelReader();
+
+        Color Pixel =blurredPixels.getColor(2, 0);
+        Assertions.assertEquals(Pixel, Color.rgb(0, 0, 0));
+    }
+    @Test
+    public void checkMiddleReverse() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5BlurReverse.png"));
+        Image blurredImage = new Blur().blur(testImage);
+        PixelReader blurredPixels = blurredImage.getPixelReader();
+
+        Color Pixel = blurredPixels.getColor(2, 2);
+
+        Assertions.assertEquals(Pixel, Color.rgb(51, 51, 51));
+    }
+
+    @Test
+    public void checkAverageCornerReverse() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5BlurReverse.png"));
+        Image blurredImage = new Blur().blur(testImage);
+        PixelReader blurredPixels = blurredImage.getPixelReader();
+
+        Color Pixel =blurredPixels.getColor(0, 0);
+        Assertions.assertEquals(Pixel, Color.rgb(0, 0, 0));
+    }
+
+    @Test
+    public void checkAverageSideReverse() throws IOException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5BlurReverse.png"));
+        Image blurredImage = new Blur().blur(testImage);
+        PixelReader blurredPixels = blurredImage.getPixelReader();
+
+        Color Pixel =blurredPixels.getColor(2, 0);
+        Assertions.assertEquals(Pixel, Color.rgb(0, 0, 0));
     }
 
 
