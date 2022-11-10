@@ -53,7 +53,6 @@ public class BlurTest {
         Image blurredImage = new Blur().blur(testImage);
         PixelReader blurredPixels = blurredImage.getPixelReader();
 
-
         Color Pixel = blurredPixels.getColor(1, 1);
 
         Assertions.assertEquals(Pixel, Color.rgb(113, 113, 113));
