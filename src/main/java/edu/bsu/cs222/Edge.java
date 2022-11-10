@@ -1,5 +1,4 @@
 package edu.bsu.cs222;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
@@ -25,6 +24,7 @@ public class Edge {
                 }
             }
         }
+
         return tmp;
     }
 
