@@ -10,7 +10,6 @@ import java.io.IOException;
 public class Download {
 
     public void download(Image displayImage, String fileDirectory) throws IOException {
-
         ImageIO.write(SwingFXUtils.fromFXImage(displayImage, null), "png", new File(getModifiedFileDirectory(fileDirectory)));
     }
 

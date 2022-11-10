@@ -31,7 +31,6 @@ public class Stylize {
                     writer.setColor(x, y, tertiary);
             }
         }
-
         return tmp;
     }
     public Image stylize(Image image, Color primaryColor, Color secondaryColor, Color tertiaryColor){
