@@ -86,7 +86,7 @@ public class BlurTest {
 
         Color Pixel = blurredPixels.getColor(2, 2);
 
-        Assertions.assertEquals(Pixel, Color.rgb(51, 51, 51));
+        Assertions.assertEquals(Pixel, Color.rgb(204, 204, 204));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class BlurTest {
         PixelReader blurredPixels = blurredImage.getPixelReader();
 
         Color Pixel =blurredPixels.getColor(0, 0);
-        Assertions.assertEquals(Pixel, Color.rgb(0, 0, 0));
+        Assertions.assertEquals(Pixel, Color.rgb(255, 255, 255));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class BlurTest {
         PixelReader blurredPixels = blurredImage.getPixelReader();
 
         Color Pixel =blurredPixels.getColor(2, 0);
-        Assertions.assertEquals(Pixel, Color.rgb(0, 0, 0));
+        Assertions.assertEquals(Pixel, Color.rgb(255, 255, 255));
     }
 
 
