@@ -1,5 +1,5 @@
 # Final-Ethan-Mason-Logan-Samuel
-Final Project verson 0.2.0
+Final Project verson 2.0.0
 by Samuel Gross, Ethan Hooper, Mason Leffel, and Logan Greer
 
 Instructions:
