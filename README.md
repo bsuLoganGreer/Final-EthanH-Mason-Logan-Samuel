@@ -1,14 +1,15 @@
 # Final-Ethan-Mason-Logan-Samuel
-Final Project verson 0.1.0
+Final Project verson 0.2.0
 by Samuel Gross, Ethan Hooper, Mason Leffel, and Logan Greer
 
 Instructions:
-Type test.png into enter a file name and hit select photo. From there you just use the dropdown and hit apply to apply the filters. 
+When the project opens, select a file to edit. Unacceptable formats will not be allowed to be selected. Then hit the select photo button to process your choice.
 
 To run this project, use the Gradle run function
 
-For this iteration, if the user wishes to use their own photo they can simply place it in the resources folder of the project
-Once the user types the name of the file and clicks the select photo, the GUI will display the original photo.
-If the file is not found, no image will display.
-Once the image is displayed, the user can select whichever filter they would like and click to apply it.
-The photo will display instantly.
+
+Once the image is displayed, the user can select whichever function they would like and click to apply it.
+The download function will download the photo on the screen as modified_(name of original file).png and store it in the same directory it was taken from. This is to save the user time.
+Reset will return the photo to the original.
+
+Please note that shrink is not a lossless function.
