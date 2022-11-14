@@ -12,9 +12,9 @@ public class Stylize {
     //main: #ff782f, or (255, 120, 47)
     //secondary: #2f4eff or (47, 78, 255)
     //tertiary: #2fffe0 or (47, 255, 224)
-    private Color primary = Color.rgb(255, 120, 47);
-    private Color secondary = Color.rgb(47, 78, 255);
-    private Color tertiary = Color.rgb(47, 255, 224);
+    private final Color primary = Color.rgb(255, 120, 47);
+    private final Color secondary = Color.rgb(47, 78, 255);
+    private final Color tertiary = Color.rgb(47, 255, 224);
 
     public Image stylize(Image img){
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
@@ -33,12 +33,7 @@ public class Stylize {
         }
         return tmp;
     }
-    public Image stylize(Image image, Color primaryColor, Color secondaryColor, Color tertiaryColor){
-        primary = primaryColor;
-        secondary = secondaryColor;
-        tertiary = tertiaryColor;
-        return stylize(image);
-    }
+
 
     public boolean SetPrimary(Color color) {
         return color.getBrightness() <= 0.75 && color.getBrightness() >= 0.25;

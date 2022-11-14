@@ -14,8 +14,7 @@ public class FilePicker {
                 new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
 
         File selectedFile = fileChooser.showOpenDialog(stage);
-        String dir = selectedFile.getAbsolutePath();
 
-        return dir;
+        return selectedFile.getAbsolutePath();
     }
 }

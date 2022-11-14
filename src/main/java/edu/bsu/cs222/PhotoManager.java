@@ -46,7 +46,4 @@ public class PhotoManager {
         new Download().download(displayImage, sourceDir);
     }
 
-    public void downLoad() throws IOException {
-        new Download().download(displayImage, sourceDir);
-    }
 }
