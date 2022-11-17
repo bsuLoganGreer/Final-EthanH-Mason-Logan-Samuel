@@ -12,8 +12,8 @@ public class Blur {
         PixelReader reader = img.getPixelReader();
         PixelWriter writer = tmp.getPixelWriter();
 
-        for (int x = 2; x < ((int) img.getWidth() - 2); x++) {
-            for (int y = 2; y < ((int) img.getHeight() - 2); y++) {
+        for (int x = 0; x < ((int) img.getWidth()); x++) {
+            for (int y = 0; y < ((int) img.getHeight()); y++) {
                 writer.setColor(x, y, getBlurredColor(reader, x, y));
             }
         }
