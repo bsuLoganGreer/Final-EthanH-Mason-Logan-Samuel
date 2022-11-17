@@ -76,11 +76,9 @@ public class BlurTest {
     @Test
     public void checkAverageSideReverse() throws IOException{
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5x5BlurReverse.png"));
-        Image blurredImage = new Blur().blur(testImage);
-        PixelReader blurredPixels = blurredImage.getPixelReader();
+        PixelReader testReader = testImage.getPixelReader();
 
-        Color Pixel =blurredPixels.getColor(2, 0);
-        Assertions.assertEquals(Pixel, Color.rgb(255, 255, 255));
+        Assertions.assertEquals(new Blur().getBlurredColor(testReader, 2, 0), Color.rgb(187, 187, 187));
     }
 
 
