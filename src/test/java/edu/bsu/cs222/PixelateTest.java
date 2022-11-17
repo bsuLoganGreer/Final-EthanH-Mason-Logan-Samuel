@@ -39,4 +39,16 @@ public class PixelateTest {
         new Pixelate().setAverage(testWriter,0,0, Color.WHITE);
         Assertions.assertEquals(Color.WHITE, new Pixelate().getAveragePixels(tmp.getPixelReader(), 0,0));
     }
+
+    @Test
+    public void checkSetAverageBlack() throws FileNotFoundException{
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/10by10_HafWhite_HafBlack.png"));
+        PixelReader testReader = testImage.getPixelReader();
+        WritableImage tmp = new WritableImage(testReader, (int) testImage.getWidth(), (int)testImage.getHeight());
+        PixelWriter testWriter = tmp.getPixelWriter();
+
+
+        new Pixelate().setAverage(testWriter,0,0, Color.BLACK);
+        Assertions.assertEquals(Color.BLACK, new Pixelate().getAveragePixels(tmp.getPixelReader(), 0,0));
+    }
 }
