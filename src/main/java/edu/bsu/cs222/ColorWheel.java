@@ -5,13 +5,13 @@ import javafx.scene.paint.Color;
 
 public class ColorWheel {
 
-    public Color getPrimaryColor(Color color){
-        int hue = 1;
-        double saturation = 1.0;
-        double brightness = 1.0;
+    Color primaryColor;
 
-        Color mainColor = Color.hsb(hue, saturation, brightness);
-        return color;
+    public void ColorWheel(Color color){
+
+        primaryColor = color;
+
+
     }
 
     public Color getFirstComplementaryColor(Color color){
