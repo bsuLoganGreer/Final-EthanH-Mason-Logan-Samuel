@@ -1,10 +1,24 @@
 package edu.bsu.cs222;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 public class Pixelate {
+
+    public Image pixelate(Image img){
+        PixelReader reader = img.getPixelReader();
+        WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
+        PixelWriter writer = tmp.getPixelWriter();
+        for (int w=0; w < img.getWidth(); w++) {
+            for (int h = 0; h < img.getHeight(); h++) {
+                setAverage(writer, w, h, getAveragePixels(reader, w, h));
+            }
+        }
+        return tmp;
+    }
     public Color getAveragePixels(PixelReader reader, int x, int y) {
         double averageRed = 0.0;
         double averageGreen = 0.0;

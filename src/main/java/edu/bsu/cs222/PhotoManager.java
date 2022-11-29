@@ -33,6 +33,9 @@ public class PhotoManager {
     public void shrinkImage(){
         displayImage = new ResizeImage().shrink(displayImage, 2);
     }
+    public void pixelateImage(){
+        displayImage = new Pixelate().pixelate(displayImage);
+    }
     public void blackAndWhiteImage(){
         displayImage = new BlackAndWhite().blackAndWhite(displayImage);
     }
