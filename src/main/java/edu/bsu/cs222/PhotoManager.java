@@ -46,4 +46,5 @@ public class PhotoManager {
         new Download().download(displayImage, sourceDir);
     }
 
+
 }

@@ -12,7 +12,7 @@ public class ColorWheelTest {
     //tertiary: #2fffe0 or (47, 255, 224)
     @Test
     public void CheckFirstComplementaryColor(){
-        Color TestColor = Color.hsb(0, 1.0, 1.0);
+        Color TestColor = Color.hsb(150, 1.0, 1.0);
         Color SecondaryColor = new ColorWheel().getFirstComplementaryColor(TestColor);
 
         Assertions.assertEquals(150, SecondaryColor.getHue());
@@ -24,7 +24,7 @@ public class ColorWheelTest {
     @Test
     public void CheckSecondaryComplementaryColor(){
         Color TestColor = Color.hsb(210, 1.0, 1.0);
-        Color TertiaryColor = new ColorWheel().getFirstComplementaryColor(TestColor);
+        Color TertiaryColor = new ColorWheel().getSecondComplementaryColor(TestColor);
 
         Assertions.assertEquals(210, TertiaryColor.getHue());
 
