@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javafx.scene.paint.Color;
 
 public class PhotoManager {
     private Image displayImage;
@@ -43,7 +44,9 @@ public class PhotoManager {
         displayImage = new Edge().edge(displayImage);
     }
     public void stylizeImage(){
-        displayImage = new Stylize().stylize(displayImage);
+        Stylize stylizeEngine = new Stylize();
+        stylizeEngine.setColors(new Color(0.5, .25, .75, 1.0));
+        displayImage = stylizeEngine.stylize(displayImage);
     }
     public void downloadImage() throws IOException {
         new Download().download(displayImage, sourceDir);
