@@ -1,25 +1,25 @@
 package edu.bsu.cs222;
 
-
 import javafx.scene.paint.Color;
 
 public class ColorWheel {
 
-    Color primaryColor;
-
-    public void ColorWheel(Color color){
-
-        primaryColor = color;
-
-
-    }
-
     public Color getFirstComplementaryColor(Color color){
-        return color;
+        Double hue = color.getHue() + 150.0;
+        if (hue > 360){hue -= 360;}
+
+        Color returnColor = Color.hsb(hue, color.getSaturation(), color.getBrightness());
+
+        return returnColor;
     }
 
     public Color getSecondComplementaryColor(Color color) {
-        return color;
+        Double hue = color.getHue() + 210.0;
+        if (hue > 360){hue -= 360;}
+
+        Color returnColor = Color.hsb(hue, color.getSaturation(), color.getBrightness());
+
+        return returnColor;
     }
 
 }
