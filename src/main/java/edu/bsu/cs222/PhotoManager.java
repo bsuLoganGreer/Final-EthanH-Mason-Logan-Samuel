@@ -45,6 +45,9 @@ public class PhotoManager {
     public void stylizeImage(){
         displayImage = new Stylize().stylize(displayImage);
     }
+    public void normalizeImage(){
+        displayImage = new Normalize().normalize(displayImage);
+    }
     public void downloadImage() throws IOException {
         new Download().download(displayImage, sourceDir);
     }
