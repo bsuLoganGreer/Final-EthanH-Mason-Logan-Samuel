@@ -1,33 +1,44 @@
 package edu.bsu.cs222;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import javafx.scene.paint.Color;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class NormalizeTest {
 
     @Test
-    public void checkAverageWhite() throws FileNotFoundException {
-        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
-        PixelReader testReader = testImage.getPixelReader();
-
-        Color normal = new Normalize().getAveragePixels(testReader, 0, 0);
-        Assertions.assertEquals(normal, Color.WHITE);
+    public void check254() {
+        int x= 254;
+        int returnValue = new Normalize().getRoundedValue(x);
+        Assertions.assertEquals(250, returnValue);
     }
 
+    @Test
+    public void  check75(){
+        int x=75;
+        int returnValue = new Normalize().getRoundedValue(x);
+        Assertions.assertEquals(50, returnValue);
+    }
+    @Test
+    public void checkGetRoundedBlack(){
+        Color testColor = Color.BLACK;
+        Color returnedColor= new Normalize().getRoundedColor(testColor);
 
+        Assertions.assertEquals(Color.BLACK, returnedColor);
+    }
 
     @Test
-    public void  checkBlue() throws FileNotFoundException {
-        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
-        PixelReader testReader = testImage.getPixelReader();
-
-
+    public void checkGetRoundedWhite(){
+        Color testColor = Color.WHITE;
+        Color returnedColor= new Normalize().getRoundedColor(testColor);
+        Assertions.assertEquals(Color.rgb(250,250,250), returnedColor);
+    }
+    @Test
+    public void checkGetRoundedBlue(){
+        Color testColor = Color.BLUE;
+        Color returnedColor= new Normalize().getRoundedColor(testColor);
+        Assertions.assertEquals(Color.rgb(0,0,250), returnedColor);
     }
 }
 

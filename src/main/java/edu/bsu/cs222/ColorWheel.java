@@ -1,6 +1,6 @@
 package edu.bsu.cs222;
 
-import javafx.scene.image.WritableImage;
+
 import javafx.scene.paint.Color;
 
 public class ColorWheel {
