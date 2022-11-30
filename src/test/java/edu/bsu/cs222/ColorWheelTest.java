@@ -6,27 +6,39 @@ import org.junit.jupiter.api.Test;
 
 public class ColorWheelTest {
 
-    //For testing purposes we will use this split complementary pair
-    //main: #ff782f, or (255, 120, 47)
-    //secondary: #2f4eff or (47, 78, 255)
-    //tertiary: #2fffe0 or (47, 255, 224)
     @Test
-    public void CheckFirstComplementaryColor(){
-        Color TestColor = Color.hsb(150, 1.0, 1.0);
+    public void CheckFirstComplementaryColorHue0(){
+        Color TestColor = Color.hsb(0, 1.0, 1.0);
         Color SecondaryColor = new ColorWheel().getFirstComplementaryColor(TestColor);
 
         Assertions.assertEquals(150, SecondaryColor.getHue());
 
+    }
 
+    @Test
+    public void CheckFirstComplementaryColorHue300(){
+        Color TestColor = Color.hsb(300, 1.0, 1.0);
+        Color SecondaryColor = new ColorWheel().getFirstComplementaryColor(TestColor);
+
+        Assertions.assertEquals(90, SecondaryColor.getHue());
 
     }
 
     @Test
-    public void CheckSecondaryComplementaryColor(){
-        Color TestColor = Color.hsb(210, 1.0, 1.0);
-        Color TertiaryColor = new ColorWheel().getSecondComplementaryColor(TestColor);
+    public void CheckSecondaryComplementaryColorHue0(){
+        Color TestColor = Color.hsb(0, 1.0, 1.0);
+        Color SecondaryColor = new ColorWheel().getSecondComplementaryColor(TestColor);
 
-        Assertions.assertEquals(210, TertiaryColor.getHue());
+        Assertions.assertEquals(210, SecondaryColor.getHue());
+
+    }
+
+    @Test
+    public void CheckSecondaryComplementaryColorHue300(){
+        Color TestColor = Color.hsb(300, 1.0, 1.0);
+        Color SecondaryColor = new ColorWheel().getSecondComplementaryColor(TestColor);
+
+        Assertions.assertEquals(150, SecondaryColor.getHue());
 
     }
 }
