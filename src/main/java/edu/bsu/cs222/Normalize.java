@@ -22,7 +22,11 @@ public class Normalize {
 
 
     public int getRoundedValue(int x) {
-       int y =x/ 50;
+       int y = x/50;
+       int remainder =x%50;
+       if (remainder > 25){
+           return y*50 + 50;
+       }
        return y*50;
     }
 
