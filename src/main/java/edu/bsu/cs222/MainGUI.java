@@ -86,6 +86,9 @@ public class MainGUI extends Application {
                 else if (filterSelector.getValue().equals("Shrink")) {
                     photoManager.shrinkImage();
                 }
+                else if (filterSelector.getValue().equals("Pixelate")){
+                    photoManager.pixelateImage();
+                }
                 else if (filterSelector.getValue().equals("Outline")){
                         photoManager.edgeImage();
                 }
@@ -98,6 +101,7 @@ public class MainGUI extends Application {
                 else if (filterSelector.getValue().equals("Download")){
                     photoManager.downloadImage();
                 }
+
                 updateImageView();
                 setRoot();
 
