@@ -55,7 +55,7 @@ public class MainGUI extends Application {
         setRoot();
         return root;
     }
-    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Outline", "Create B&W Image", "Stylize", "Reset", "Normalize", "Download");}
+    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Outline", "Create B&W Image","Pixelate", "Stylize", "Reset", "Normalize", "Download");}
 
     private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
