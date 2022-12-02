@@ -8,18 +8,14 @@ public class ColorWheel {
         double hue = color.getHue() + 150.0;
         if (hue > 360){hue -= 360;}
 
-        Color returnColor = Color.hsb(hue, color.getSaturation(), color.getBrightness());
-
-        return returnColor;
+        return Color.hsb(hue, color.getSaturation(), color.getBrightness());
     }
 
     public Color getSecondComplementaryColor(Color color) {
         double hue = color.getHue() + 210.0;
         if (hue > 360){hue -= 360;}
 
-        Color returnColor = Color.hsb(hue, color.getSaturation(), color.getBrightness());
-
-        return returnColor;
+        return Color.hsb(hue, color.getSaturation(), color.getBrightness());
     }
 
 }
