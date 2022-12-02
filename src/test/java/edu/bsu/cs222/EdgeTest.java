@@ -14,7 +14,7 @@ public class EdgeTest {
     public void checkColorDifference() throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
         PixelReader pixels = testImage.getPixelReader();
-        Image edgedImage = new Edge().edge(testImage);
+        Image edgedImage = new Edge().createOutline(testImage);
         PixelReader edgedPixels = edgedImage.getPixelReader();
 
         for (int x = 0; x < testImage.getWidth() - 2; x++) {

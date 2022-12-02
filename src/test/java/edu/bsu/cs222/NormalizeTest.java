@@ -21,6 +21,12 @@ public class NormalizeTest {
         Assertions.assertEquals(50, returnValue);
     }
     @Test
+    public void  check76(){
+        int x=76;
+        int returnValue = new Normalize().getRoundedValue(x);
+        Assertions.assertEquals(100, returnValue);
+    }
+    @Test
     public void checkGetRoundedBlack(){
         Color testColor = Color.BLACK;
         Color returnedColor= new Normalize().getRoundedColor(testColor);
