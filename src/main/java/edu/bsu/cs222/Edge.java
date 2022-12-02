@@ -7,7 +7,25 @@ import javafx.scene.paint.Color;
 
 public class Edge {
 
-    public Image edge(Image image){
+    public Image defineEdge(Image image){
+
+        PixelReader pixels = image.getPixelReader();
+        WritableImage tmp = new WritableImage(image.getPixelReader(), (int) image.getWidth(), (int)image.getHeight());
+        PixelWriter writer = tmp.getPixelWriter();
+
+        for (int x = 0; x < image.getWidth() - 2; x++) {
+            for (int y = 0; y < image.getHeight() - 1; y++) {
+                if (shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x + 1, y), 0.15) ||
+                        shouldSetBlack(pixels.getColor(x, y), pixels.getColor(x, y+1), 0.15)){
+                    writer.setColor(x,y,Color.BLACK);
+                }
+            }
+        }
+
+        return tmp;
+    }
+
+    public Image createOutline(Image image){
 
         PixelReader pixels = image.getPixelReader();
         WritableImage tmp = new WritableImage(image.getPixelReader(), (int) image.getWidth(), (int)image.getHeight());
@@ -20,7 +38,7 @@ public class Edge {
                     writer.setColor(x,y,Color.BLACK);
                 }
                 else{
-                    writer.setColor(x,y,Color.WHITE);
+                    writer.setColor(x,y, Color.WHITE);
                 }
             }
         }

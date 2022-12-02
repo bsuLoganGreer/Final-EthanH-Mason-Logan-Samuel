@@ -1,11 +1,11 @@
 package edu.bsu.cs222;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import javafx.scene.paint.Color;
 
 public class PhotoManager {
     private Image displayImage;
@@ -40,8 +40,11 @@ public class PhotoManager {
     public void blackAndWhiteImage(){
         displayImage = new BlackAndWhite().blackAndWhite(displayImage);
     }
-    public void edgeImage(){
-        displayImage = new Edge().edge(displayImage);
+    public void outlineImage(){
+        displayImage = new Edge().createOutline(displayImage);
+    }
+    public void defineEdges(){
+        displayImage = new Edge().defineEdge(displayImage);
     }
     public void stylizeImage(){
         Stylize stylizeEngine = new Stylize();

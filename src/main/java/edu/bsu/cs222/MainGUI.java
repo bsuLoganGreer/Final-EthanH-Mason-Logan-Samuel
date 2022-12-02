@@ -55,7 +55,7 @@ public class MainGUI extends Application {
         setRoot();
         return root;
     }
-    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Outline", "Create B&W Image","Pixelate", "Stylize", "Reset", "Normalize", "Download");}
+    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Outline", "Draw Edges", "Create B&W Image","Pixelate", "Stylize", "Reset", "Normalize", "Download");}
 
     private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
@@ -90,7 +90,10 @@ public class MainGUI extends Application {
                     photoManager.pixelateImage();
                 }
                 else if (filterSelector.getValue().equals("Outline")){
-                        photoManager.edgeImage();
+                        photoManager.outlineImage();
+                }
+                else if (filterSelector.getValue().equals("Draw Edges")){
+                    photoManager.defineEdges();
                 }
                 else if (filterSelector.getValue().equals("Stylize")){
                     photoManager.stylizeImage();
