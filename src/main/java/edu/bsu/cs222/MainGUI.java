@@ -25,6 +25,7 @@ public class MainGUI extends Application {
     private final TextField inputField = new TextField();
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
+    private final ColorPicker colorPicker = new ColorPicker();
     private final PhotoManager photoManager = new PhotoManager();
     private final ComboBox<String> filterSelector = new ComboBox<>();
     private ImageView imageView;
@@ -96,7 +97,7 @@ public class MainGUI extends Application {
                     photoManager.defineEdges();
                 }
                 else if (filterSelector.getValue().equals("Stylize")){
-                    photoManager.stylizeImage();
+                    photoManager.stylizeImage(colorPicker.getValue());
                 }
                 else if (filterSelector.getValue().equals("Normalize")){
                     photoManager.normalizeImage();
@@ -127,6 +128,7 @@ public class MainGUI extends Application {
                 new Label("Enter a file name:"),
                 inputField,//
                 selectPhotoButton, //
+                colorPicker,
                 errorMessage, //
                 new Label("Select a modification:"), //
                 filterSelector, //

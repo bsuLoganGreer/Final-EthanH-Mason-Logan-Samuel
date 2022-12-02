@@ -46,9 +46,9 @@ public class PhotoManager {
     public void defineEdges(){
         displayImage = new Edge().defineEdge(displayImage);
     }
-    public void stylizeImage(){
+    public void stylizeImage(Color color){
         Stylize stylizeEngine = new Stylize();
-        stylizeEngine.setColors(new Color(0.5, .25, .75, 1.0));
+        stylizeEngine.setColors(color);
         displayImage = stylizeEngine.stylize(displayImage);
     }
     public void normalizeImage(){
