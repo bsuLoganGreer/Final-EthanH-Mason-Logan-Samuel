@@ -29,22 +29,18 @@ public class PixelProcessorTest {
         Assertions.assertFalse(pixels.shouldProcess(5,5));
 
     }
-
     @Test
-    public void testSetBlackPixelsProcessedTrue() throws FileNotFoundException {
-        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+    public void testIndexOutOfBoundsAbove() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/10by10_White.png"));
         PixelProcessor pixels = new PixelProcessor(testImage);
-        pixels.processBlackPixels();
-        Assertions.assertTrue(pixels.shouldProcess(2,2));
+        Assertions.assertFalse(pixels.shouldProcess(10,10));
 
     }
-
     @Test
-    public void testSetBlackPixelsProcessedFalse() throws FileNotFoundException {
-        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+    public void testIndexOutOfBoundsBelow() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/10by10_White.png"));
         PixelProcessor pixels = new PixelProcessor(testImage);
-        pixels.processBlackPixels();
-        Assertions.assertTrue(pixels.shouldProcess(0,0));
+        Assertions.assertFalse(pixels.shouldProcess(-1,-1));
 
     }
 

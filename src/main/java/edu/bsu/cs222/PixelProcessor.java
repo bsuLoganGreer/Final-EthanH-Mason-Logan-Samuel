@@ -14,6 +14,8 @@ public class PixelProcessor {
     }
 
     public boolean shouldProcess(int x, int y) {
+        if (x >= processedList.length || x < 0 || y>= processedList[1].length || y < 0)
+            return false;
         return processedList[x][y];
     }
 
@@ -21,6 +23,5 @@ public class PixelProcessor {
         processedList[x][y] = false;
     }
 
-    public void processBlackPixels() {
-    }
+
 }
