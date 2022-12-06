@@ -25,6 +25,7 @@ public class MainGUI extends Application {
     private final TextField inputField = new TextField();
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
+    private final Button undoButton = new Button("Undo");
     private final ColorPicker colorPicker = new ColorPicker();
     private final PhotoManager photoManager = new PhotoManager();
     private final ComboBox<String> filterSelector = new ComboBox<>();
