@@ -51,8 +51,12 @@ public class PhotoManager {
         stylizeEngine.setColors(color);
         displayImage = stylizeEngine.stylize(displayImage);
     }
+
     public void normalizeImage(){
         displayImage = new Normalize().normalize(displayImage);
+    }
+    public void animeImage(){
+        displayImage = new Anime(displayImage).getAnimeImage();
     }
     public void downloadImage() throws IOException {
         new Download().download(displayImage, sourceDir);

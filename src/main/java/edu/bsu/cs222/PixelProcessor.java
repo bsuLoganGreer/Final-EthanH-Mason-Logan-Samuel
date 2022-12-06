@@ -20,4 +20,7 @@ public class PixelProcessor {
     public void setProcessed(int x, int y) {
         processedList[x][y] = false;
     }
+
+    public void processBlackPixels() {
+    }
 }

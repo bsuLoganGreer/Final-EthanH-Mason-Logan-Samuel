@@ -30,4 +30,22 @@ public class PixelProcessorTest {
 
     }
 
+    @Test
+    public void testSetBlackPixelsProcessedTrue() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        PixelProcessor pixels = new PixelProcessor(testImage);
+        pixels.processBlackPixels();
+        Assertions.assertTrue(pixels.shouldProcess(2,2));
+
+    }
+
+    @Test
+    public void testSetBlackPixelsProcessedFalse() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        PixelProcessor pixels = new PixelProcessor(testImage);
+        pixels.processBlackPixels();
+        Assertions.assertTrue(pixels.shouldProcess(0,0));
+
+    }
+
 }
