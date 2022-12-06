@@ -144,8 +144,7 @@ public class MainGUI extends Application {
 
     private void updateImageView() throws FileNotFoundException {
         imageView = new ImageView(photoManager.getDisplayImage());
-        imageView.setX(50);
-        imageView.setY(25);
+        imageView.setFitWidth(500);
         imageView.setPreserveRatio(true);
     }
 
