@@ -29,10 +29,15 @@ public class PhotoManager {
         addDisplayImage();
     }
     private void addDisplayImage(){
-        count += 1;
-        imageHistory.set(count, displayImage);
+        try {
+            count += 1;
+            imageHistory.set(count, displayImage);
+        }
+        catch (Exception e){
+
+        }
     }
-    private void revertDisplayImage(){
+    public void revertDisplayImage(){
         count -= 1;
         displayImage = imageHistory.get(count);
     }

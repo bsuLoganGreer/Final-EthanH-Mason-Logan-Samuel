@@ -70,6 +70,17 @@ public class MainGUI extends Application {
             }
         });
     }
+    private void configureUndoButton() {
+        undoButton.setOnAction(event -> {
+            try {
+                photoManager.revertDisplayImage();
+                updateImageView();
+                setRoot();
+            } catch (Exception e) {
+                errorMessage.setText("Make sure there is somewhere to revert to!");
+            }
+        });
+    }
     private void configureDisplayPhotoButton() {
         displayPhotoButton.setOnAction(event -> {
             try {
@@ -137,6 +148,7 @@ public class MainGUI extends Application {
                 new Label("Select a modification:"), //
                 filterSelector, //
                 displayPhotoButton, //
+                undoButton,
                 new Label("Modified Photo:") //
                 , imageView
         );
