@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PhotoManager {
     private Image displayImage;
-    private ArrayList<Image> imageHistory;
+    private final ArrayList<Image> imageHistory = new ArrayList<>();
     private int count = -1;
     private String sourceDir;
 
@@ -30,11 +30,11 @@ public class PhotoManager {
     }
     private void addDisplayImage(){
         try {
-            count += 1;
-            imageHistory.set(count, displayImage);
+            count ++;
+            imageHistory.add(count, displayImage);
         }
         catch (Exception e){
-
+            count ++;
         }
     }
     public void revertDisplayImage(){

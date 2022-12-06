@@ -26,6 +26,7 @@ public class MainGUI extends Application {
     private final Button displayPhotoButton = new Button("Apply!");
     private final Button selectPhotoButton = new Button("Select Photo->");
     private final Button undoButton = new Button("Undo");
+    private final Button downloadButton = new Button("Download");
     private final ColorPicker colorPicker = new ColorPicker();
     private final PhotoManager photoManager = new PhotoManager();
     private final ComboBox<String> filterSelector = new ComboBox<>();
@@ -40,6 +41,8 @@ public class MainGUI extends Application {
         configureSelectPhotoButton();
         configureComboBox();
         configureDisplayPhotoButton();
+        configureUndoButton();
+        configureDownloadButton();
     }
 
     private void configure(Stage stage) throws FileNotFoundException {
@@ -57,7 +60,7 @@ public class MainGUI extends Application {
         setRoot();
         return root;
     }
-    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Outline", "Draw Edges", "Create B&W Image","Pixelate", "Stylize","Anime", "Reset", "Paint", "Download");}
+    private void configureComboBox(){filterSelector.getItems().addAll("Blur", "Enlarge", "Shrink", "Outline", "Draw Edges", "Create B&W Image","Pixelate", "Stylize","Anime", "Reset", "Paint");}
 
     private void configureSelectPhotoButton() {
         selectPhotoButton.setOnAction(event -> {
@@ -76,8 +79,20 @@ public class MainGUI extends Application {
                 photoManager.revertDisplayImage();
                 updateImageView();
                 setRoot();
+                System.out.println("Hi");
             } catch (Exception e) {
                 errorMessage.setText("Make sure there is somewhere to revert to!");
+            }
+        });
+    }
+    private void configureDownloadButton() {
+        downloadButton.setOnAction(event -> {
+            try {
+                photoManager.downloadImage();
+                updateImageView();
+                setRoot();
+            } catch (Exception e) {
+                errorMessage.setText("Could not download.");
             }
         });
     }
@@ -114,9 +129,6 @@ public class MainGUI extends Application {
                 else if (filterSelector.getValue().equals("Paint")){
                     photoManager.paintImage();
                 }
-                else if (filterSelector.getValue().equals("Download")){
-                    photoManager.downloadImage();
-                }
                 else if (filterSelector.getValue().equals("Anime")){
                     photoManager.animeImage();
                 }
@@ -149,6 +161,7 @@ public class MainGUI extends Application {
                 filterSelector, //
                 displayPhotoButton, //
                 undoButton,
+                downloadButton,
                 new Label("Modified Photo:") //
                 , imageView
         );
