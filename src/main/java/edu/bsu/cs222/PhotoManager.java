@@ -44,6 +44,7 @@ public class PhotoManager {
 
     public void blurImage() throws IOException {
         displayImage = new Blur().blur(displayImage);
+        addDisplayImage();
     }
 
     public void expandImage(){
