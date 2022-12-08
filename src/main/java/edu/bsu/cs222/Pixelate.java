@@ -13,8 +13,8 @@ public class Pixelate {
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
         PixelWriter writer = tmp.getPixelWriter();
         for (int w=0; w < img.getWidth(); w += 10) {
-            for (int h = 0; h < img.getHeight(); h += 10) {
-                setAverage(writer, w, h, getAveragePixels(reader, w, h));
+            for (int height = 0; height < img.getHeight(); height += 10) {
+                setAverage(writer, w, height, getAveragePixels(reader, w, height));
             }
         }
         return tmp;
@@ -24,12 +24,12 @@ public class Pixelate {
         double averageGreen = 0.0;
         double averageBlue = 0.0;
         int numPixels = 0;
-        for (int w=0; w <= 10; w++) {
-            for (int h = 0; h <= 10; h++) {
+        for (int width=0; width <= 10; width++) {
+            for (int hight = 0; hight <= 10; hight++) {
                 try {
-                    averageRed += reader.getColor(x + w, y + h).getRed();
-                    averageGreen += reader.getColor(x + w, y + h).getGreen();
-                    averageBlue += reader.getColor(x + w, y + h).getBlue();
+                    averageRed += reader.getColor(x + width, y + hight).getRed();
+                    averageGreen += reader.getColor(x + width, y + hight).getGreen();
+                    averageBlue += reader.getColor(x + width, y + hight).getBlue();
                     numPixels++;
                 }
                 catch (IndexOutOfBoundsException ignored){
