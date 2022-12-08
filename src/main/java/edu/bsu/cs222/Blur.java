@@ -26,11 +26,11 @@ public class Blur {
         double averageBlue = 0.0;
         int numPixels = 0;
         for (int width = -2; width <= 2; width++) {
-            for (int hight = -2; hight <= 2; hight++) {
+            for (int height = -2; height <= 2; height++) {
                 try {
-                    averageRed += reader.getColor(x + width, y + hight).getRed();
-                    averageGreen += reader.getColor(x + width, y + hight).getGreen();
-                    averageBlue += reader.getColor(x + width, y + hight).getBlue();
+                    averageRed += reader.getColor(x + width, y + height).getRed();
+                    averageGreen += reader.getColor(x + width, y + height).getGreen();
+                    averageBlue += reader.getColor(x + width, y + height).getBlue();
                     numPixels++;
                 }
                 catch (IndexOutOfBoundsException ignored){

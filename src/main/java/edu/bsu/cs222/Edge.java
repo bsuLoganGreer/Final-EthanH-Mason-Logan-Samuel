@@ -46,7 +46,7 @@ public class Edge {
         return tmp;
     }
 
-    public boolean shouldSetBlack(Color color, Color color1, double v) {
+    public boolean shouldSetBlack(Color color, Color color1, double value) {
         double sumColor1 = color.getRed();
         sumColor1 += color.getGreen();
         sumColor1 += color.getBlue();
@@ -55,6 +55,6 @@ public class Edge {
         sumColor2 += color1.getBlue();
         sumColor2 += color1.getGreen();
         double difference = Math.abs(sumColor1 - sumColor2);
-        return difference > v;
+        return difference > value;
     }
 }
