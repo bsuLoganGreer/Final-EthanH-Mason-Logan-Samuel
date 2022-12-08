@@ -48,7 +48,6 @@ public class MainGUI extends Application {
     private void configure(Stage stage) throws FileNotFoundException {
         stage.setTitle("Photo filter");
         stage.setScene(new Scene(createRoot()));
-        // will soon need to adjust to photo size
         stage.setWidth(1000);
         stage.setHeight(800);
         stage.show();
@@ -145,7 +144,7 @@ public class MainGUI extends Application {
 
     private void updateImageView() throws FileNotFoundException {
         imageView = new ImageView(photoManager.getDisplayImage());
-        imageView.setFitWidth(650);
+        imageView.setFitHeight(500);
         imageView.setPreserveRatio(true);
     }
 
