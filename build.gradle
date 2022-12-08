@@ -12,7 +12,7 @@ repositories {
 }
 
 application {
-    mainClass.set("edu.bsu.cs222.MainGUI")
+    mainClass.set("edu.bsu.cs222.MainGUI3Launcher")
 }
 
 javafx {
