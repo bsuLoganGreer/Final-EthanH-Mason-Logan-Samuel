@@ -12,9 +12,9 @@ public class Stylize {
     //main: #ff782f, or (255, 120, 47)
     //secondary: #2f4eff or (47, 78, 255)
     //tertiary: #2fff0 or (47, 255, 224)
-    private Color primary = Color.rgb(255, 120, 47);
-    private Color secondary = Color.rgb(47, 78, 255);
-    private Color tertiary = Color.rgb(47, 255, 224);
+    private Color primary;
+    private Color secondary;
+    private Color tertiary;
 
     public Image stylize(Image img){
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());

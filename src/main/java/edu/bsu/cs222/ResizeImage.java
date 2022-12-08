@@ -15,9 +15,9 @@ public class ResizeImage {
         for (int x = 0;x<(int)img.getWidth(); x++){
             for (int y = 0;y<(int)img.getHeight(); y++){
                 Color sourceColor = reader.getColor(x,y);
-                for (int w = 0;w<resizeFactor; w++) {
-                    for (int h = 0; h < resizeFactor; h++) {
-                        writer.setColor(x * 2 + w, y * 2 + h, sourceColor);
+                for (int width = 0;width<resizeFactor; width++) {
+                    for (int hight = 0; hight < resizeFactor; hight++) {
+                        writer.setColor(x * 2 + width, y * 2 + hight, sourceColor);
                     }
                 }
             }
