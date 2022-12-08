@@ -79,7 +79,7 @@ public class MainGUI extends Application {
                 photoManager.revertDisplayImage();
                 updateImageView();
                 setRoot();
-                System.out.println("Hi");
+                System.out.println();
             } catch (Exception e) {
                 errorMessage.setText("Make sure there is somewhere to revert to!");
             }
@@ -95,6 +95,7 @@ public class MainGUI extends Application {
                 errorMessage.setText("Could not download.");
             }
         });
+
     }
     private void configureDisplayPhotoButton() {
         displayPhotoButton.setOnAction(event -> {
