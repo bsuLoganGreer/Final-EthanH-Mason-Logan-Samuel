@@ -13,7 +13,6 @@ public class Anime {
 
     PixelProcessor pixelProcessor;
     Image original;
-    Image outlinedImage;
     PixelReader reader;
 
     public Anime(){
@@ -21,22 +20,18 @@ public class Anime {
     }
     public Anime(Image img){
         pixelProcessor = new PixelProcessor(img);
-        outlinedImage = new Blur().blur(img);
-        outlinedImage = new Normalize().normalize(outlinedImage);
-        outlinedImage = new Edge().defineEdge(outlinedImage);
-        reader = outlinedImage.getPixelReader();
-        processBlackPixels();
         original = img;
         reader = img.getPixelReader();
+        processBlackPixels();
 
     }
 
     public Image getAnimeImage(){
-        WritableImage tmp = new WritableImage(new Normalize().normalize(original).getPixelReader(), (int) outlinedImage.getWidth(), (int)outlinedImage.getHeight());
+        WritableImage tmp = new WritableImage(new Normalize().normalize(original).getPixelReader(), (int) original.getWidth(), (int)original.getHeight());
         PixelWriter writer = tmp.getPixelWriter();
 
-        for (int x=0; x < outlinedImage.getWidth(); x ++) {
-            for (int y = 0; y < outlinedImage.getHeight(); y ++) {
+        for (int x=0; x < original.getWidth(); x ++) {
+            for (int y = 0; y < original.getHeight(); y ++) {
                 if (pixelProcessor.shouldProcess(x, y)){
                     ArrayList<Color> colorList = new ArrayList<>();
                     ArrayList<Point> pointList = new ArrayList<>();
@@ -83,8 +78,8 @@ public class Anime {
     }
 
     public void processBlackPixels() {
-        for (int x = 0; x< outlinedImage.getWidth(); x++){
-            for (int y = 0; y< outlinedImage.getHeight(); y++){
+        for (int x = 0; x< original.getWidth(); x++){
+            for (int y = 0; y< original.getHeight(); y++){
                 if (reader.getColor(x, y).getBrightness() < .05){
                     pixelProcessor.setProcessed(x, y);
                 }

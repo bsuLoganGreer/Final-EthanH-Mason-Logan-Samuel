@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -38,7 +39,6 @@ public class AnimeTest {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
         Anime animeTest = new Anime(testImage);
 
-        animeTest.processBlackPixels();
         Assertions.assertTrue(animeTest.pixelProcessor.shouldProcess(2,2));
 
     }
@@ -47,8 +47,67 @@ public class AnimeTest {
     public void testSetBlackPixelsProcessedFalse() throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
         Anime animeTest = new Anime(testImage);
-        animeTest.processBlackPixels();
         Assertions.assertFalse(animeTest.pixelProcessor.shouldProcess(0,0));
+
+    }
+
+    @Test
+    public void testCreateColorListFirstItem() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        Anime animeTest = new Anime(testImage);
+
+        ArrayList<Color> colorList = new ArrayList<>();
+        ArrayList<Point> pointList = new ArrayList<>();
+        animeTest.createColorGroup(1, 2, pointList, colorList);
+        Assertions.assertEquals(Color.WHITE, colorList.get(0));
+
+    }
+
+    @Test
+    public void testCreateColorListFourthItem() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        Anime animeTest = new Anime(testImage);
+
+        ArrayList<Color> colorList = new ArrayList<>();
+        ArrayList<Point> pointList = new ArrayList<>();
+        animeTest.createColorGroup(1, 2, pointList, colorList);
+        Assertions.assertEquals(Color.WHITE, colorList.get(3));
+
+    }
+
+    @Test
+    public void testCreatePointListFirstItem() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        Anime animeTest = new Anime(testImage);
+
+        ArrayList<Color> colorList = new ArrayList<>();
+        ArrayList<Point> pointList = new ArrayList<>();
+        animeTest.createColorGroup(1, 2, pointList, colorList);
+        Assertions.assertEquals(new Point(1,2), pointList.get(0));
+
+    }
+
+    @Test
+    public void testCreatePointListFourthItem() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        Anime animeTest = new Anime(testImage);
+
+        ArrayList<Color> colorList = new ArrayList<>();
+        ArrayList<Point> pointList = new ArrayList<>();
+        animeTest.createColorGroup(1, 2, pointList, colorList);
+        Assertions.assertEquals(new Point(2,3), pointList.get(3));
+
+    }
+
+    @Test
+    public void testItemNotInColorGroup() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/5X5Blur.png"));
+        Anime animeTest = new Anime(testImage);
+
+        ArrayList<Color> colorList = new ArrayList<>();
+        ArrayList<Point> pointList = new ArrayList<>();
+        animeTest.createColorGroup(1, 2, pointList, colorList);
+        Assertions.assertFalse(pointList.contains(new Point(2,1)));
 
     }
 }
