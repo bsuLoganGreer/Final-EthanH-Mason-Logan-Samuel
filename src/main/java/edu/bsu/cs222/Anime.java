@@ -13,6 +13,7 @@ public class Anime {
 
     PixelProcessor pixelProcessor;
     Image original;
+    PixelReader outlineReader;
     PixelReader reader;
 
     public Anime(){
@@ -21,6 +22,7 @@ public class Anime {
     public Anime(Image img){
         pixelProcessor = new PixelProcessor(img);
         original = img;
+        setLines(original);
         reader = img.getPixelReader();
         processBlackPixels();
 
@@ -77,10 +79,15 @@ public class Anime {
         return new Color(averageRed, averageGreen, averageBlue, 1.0);
     }
 
+    public void setLines(Image outlineToDraw){
+        outlineReader = outlineToDraw.getPixelReader();
+        processBlackPixels();
+    }
+
     public void processBlackPixels() {
         for (int x = 0; x< original.getWidth(); x++){
             for (int y = 0; y< original.getHeight(); y++){
-                if (reader.getColor(x, y).getBrightness() < .05){
+                if (outlineReader.getColor(x, y).getBrightness() < .05){
                     pixelProcessor.setProcessed(x, y);
                 }
             }

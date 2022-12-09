@@ -84,7 +84,10 @@ public class PhotoManager {
         addDisplayImage();
     }
     public void animeImage(){
-        displayImage = new Anime(displayImage).getAnimeImage();
+        Anime animeFilter = new Anime(displayImage);
+
+        animeFilter.setLines(new Edge().createOutline(new Normalize().normalize(displayImage)));
+        displayImage = animeFilter.getAnimeImage();
         addDisplayImage();
     }
     public void downloadImage() throws IOException {
