@@ -9,21 +9,24 @@ import javafx.scene.paint.Color;
 public class ResizeImage {
 
     public javafx.scene.image.Image expand(javafx.scene.image.Image img, int resizeFactor){
-        WritableImage tmp = new WritableImage((int)img.getWidth()*resizeFactor, (int)img.getHeight()*resizeFactor);
+        WritableImage temporaryImage = new WritableImage((int)img.getWidth()*resizeFactor, (int)img.getHeight()*resizeFactor);
         PixelReader reader = img.getPixelReader();
-        PixelWriter writer = tmp.getPixelWriter();
-        for (int x = 0;x<(int)img.getWidth(); x++){
-            for (int y = 0;y<(int)img.getHeight(); y++){
-                Color sourceColor = reader.getColor(x,y);
-                for (int width = 0;width<resizeFactor; width++) {
-                    for (int hight = 0; hight < resizeFactor; hight++) {
-                        writer.setColor(x * 2 + width, y * 2 + hight, sourceColor);
-                    }
-                }
+        PixelWriter writer = temporaryImage.getPixelWriter();
+        for (int horizontalPosition = 0;horizontalPosition<(int)img.getWidth(); horizontalPosition++){
+            for (int verticalPosition = 0;verticalPosition<(int)img.getHeight(); verticalPosition++){
+                Color sourceColor = reader.getColor(horizontalPosition,verticalPosition);
+                expandColorIntoNewSquare(writer, horizontalPosition, verticalPosition, resizeFactor, sourceColor);
             }
         }
 
-        return tmp;
+        return temporaryImage;
+    }
+    public void expandColorIntoNewSquare(PixelWriter writer, int baseHorizontalPosition, int baseVerticalPosition, int resizeFactor, Color color){
+        for (int addedWidth = 0;addedWidth<resizeFactor; addedWidth++) {
+            for (int addedHeight = 0; addedHeight < resizeFactor; addedHeight++) {
+                writer.setColor(baseHorizontalPosition * 2 + addedWidth, baseVerticalPosition * 2 + addedHeight, color);
+            }
+        }
     }
 
     public Image shrink(Image img, int resizeFactor) {
@@ -31,10 +34,10 @@ public class ResizeImage {
         WritableImage tmp = new WritableImage((int)img.getWidth()/resizeFactor, (int)img.getHeight()/resizeFactor);
         PixelReader reader = img.getPixelReader();
         PixelWriter writer = tmp.getPixelWriter();
-        for (int x = 0;x<(int)tmp.getWidth(); x++){
-            for (int y = 0;y<(int)tmp.getHeight(); y++){
-                Color sourceColor = reader.getColor(x*resizeFactor,y*resizeFactor);
-                writer.setColor(x, y, sourceColor);
+        for (int width = 0;width<(int)tmp.getWidth(); width++){
+            for (int height = 0;height<(int)tmp.getHeight(); height++){
+                Color sourceColor = reader.getColor(width*resizeFactor,height*resizeFactor);
+                writer.setColor(width, height, sourceColor);
 
             }
         }
