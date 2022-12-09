@@ -20,10 +20,10 @@ public class Stylize {
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
         PixelReader reader = img.getPixelReader();
         PixelWriter writer = tmp.getPixelWriter();
-        for (int x = 0; x < ((int) img.getWidth()); x++) {
-            for (int y = 0; y < ((int) img.getHeight()); y++) {
-                Color sourceColor = reader.getColor(x, y);
-                writer.setColor(x,y, getCorrectColor(sourceColor));
+        for (int width = 0; width < ((int) img.getWidth()); width++) {
+            for (int height = 0; height < ((int) img.getHeight()); height++) {
+                Color sourceColor = reader.getColor(width, height);
+                writer.setColor(width,height, getCorrectColor(sourceColor));
             }
         }
         return tmp;
@@ -37,6 +37,7 @@ public class Stylize {
         else if (shouldSetTertiary(sourceColor))
             return tertiary;
 
+        //should never reach this line
         return Color.WHITE;
     }
 
