@@ -13,8 +13,8 @@ public class Normalize {
         WritableImage tmp = new WritableImage(img.getPixelReader(), (int) img.getWidth(), (int)img.getHeight());
         PixelWriter writer = tmp.getPixelWriter();
         for (int width=0; width < img.getWidth(); width++) {
-            for (int hight = 0; hight < img.getHeight(); hight++) {
-                writer.setColor(width,hight,getRoundedColor(reader.getColor(width,hight)));
+            for (int height = 0; height < img.getHeight(); height++) {
+                writer.setColor(width, height,getRoundedColor(reader.getColor(width, height)));
             }
         }
         return tmp;
