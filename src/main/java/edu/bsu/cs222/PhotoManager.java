@@ -20,14 +20,16 @@ public class PhotoManager {
 
     }
 
-    public Image getDisplayImage(){
-        return displayImage;
-    }
     public void selectPhoto(String fileLocation) throws FileNotFoundException {
         sourceDir = fileLocation;
         displayImage = new Image(new FileInputStream(fileLocation));
         addDisplayImage();
     }
+
+    public Image getDisplayImage(){
+        return displayImage;
+    }
+
     private void addDisplayImage(){
         try {
             count ++;
