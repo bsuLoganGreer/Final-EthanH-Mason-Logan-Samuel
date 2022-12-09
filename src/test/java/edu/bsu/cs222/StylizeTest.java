@@ -44,4 +44,28 @@ public class StylizeTest {
         Color test1 = Color.rgb(117,117,117);
         Assertions.assertFalse(new Stylize().shouldSetTertiary(test1));
     }
+
+    @Test
+    public void checkReceivePrimaryColor(){
+        Stylize testStylize = new Stylize();
+        testStylize.setColors(Color.hsb(0, 1.0, 1.0, 1.0));
+
+        Assertions.assertEquals(Color.hsb(0, 1.0, 1.0, 1.0), testStylize.getCorrectColor(Color.GREY));
+    }
+
+    @Test
+    public void checkReceiveSecondaryColor(){
+        Stylize testStylize = new Stylize();
+        testStylize.setColors(Color.hsb(0, 1.0, 1.0, 1.0));
+
+        Assertions.assertEquals(new ColorWheel().getFirstComplementaryColor(Color.hsb(0, 1.0, 1.0, 1.0)), testStylize.getCorrectColor(Color.BLACK));
+    }
+
+    @Test
+    public void checkReceivetertiaryColor(){
+        Stylize testStylize = new Stylize();
+        testStylize.setColors(Color.hsb(0, 1.0, 1.0, 1.0));
+
+        Assertions.assertEquals(new ColorWheel().getSecondComplementaryColor(Color.hsb(0, 1.0, 1.0, 1.0)), testStylize.getCorrectColor(Color.WHITE));
+    }
 }
