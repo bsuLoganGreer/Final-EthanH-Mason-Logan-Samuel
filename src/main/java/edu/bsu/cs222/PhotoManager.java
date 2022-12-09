@@ -79,7 +79,6 @@ public class PhotoManager {
     }
 
     public void paintImage() throws IOException{
-        blurImage();
         displayImage = new Normalize().normalize(displayImage);
         addDisplayImage();
     }
