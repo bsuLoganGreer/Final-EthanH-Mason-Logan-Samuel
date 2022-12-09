@@ -6,21 +6,21 @@ public class PixelProcessor {
     Boolean[][] processedList;
     public PixelProcessor(Image img) {
         processedList = new Boolean [(int)img.getWidth()] [(int)img.getHeight()];
-        for (int x = 0; x<(int)img.getWidth(); x++){
-            for (int y = 0; y<(int)img.getHeight(); y++){
-                processedList[x][y] = true;
+        for (int horizontalPosition = 0; horizontalPosition<(int)img.getWidth(); horizontalPosition++){
+            for (int verticalPosition = 0; verticalPosition<(int)img.getHeight(); verticalPosition++){
+                processedList[horizontalPosition][verticalPosition] = true;
             }
         }
     }
 
-    public boolean shouldProcess(int x, int y) {
-        if (x >= processedList.length || x < 0 || y>= processedList[1].length || y < 0)
+    public boolean shouldProcess(int horizontalPosition, int verticalPosition) {
+        if (horizontalPosition >= processedList.length || horizontalPosition < 0 || verticalPosition>= processedList[1].length || verticalPosition < 0)
             return false;
-        return processedList[x][y];
+        return processedList[horizontalPosition][verticalPosition];
     }
 
-    public void setProcessed(int x, int y) {
-        processedList[x][y] = false;
+    public void setProcessed(int horizontalPosition, int verticalPosition) {
+        processedList[horizontalPosition][verticalPosition] = false;
     }
 
 
