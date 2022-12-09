@@ -25,8 +25,8 @@ public class PixelateTest {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/10by10_HafWhite_HafBlack.png"));
         PixelReader testReader = testImage.getPixelReader();
 
-        Color normal = new Pixelate().getAveragePixels(testReader,0,0);
-        Assertions.assertEquals(normal, new Color(.5,.5,.5,1.0));
+        Color grayAverage = new Pixelate().getAveragePixels(testReader,0,0);
+        Assertions.assertEquals( new Color(.5,.5,.5,1.0), grayAverage);
     }
     @Test
     public void checkSetAverageWhite() throws FileNotFoundException{
