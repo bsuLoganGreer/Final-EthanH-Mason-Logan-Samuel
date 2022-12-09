@@ -86,7 +86,8 @@ public class PhotoManager {
     public void animeImage(){
         Anime animeFilter = new Anime(displayImage);
 
-        animeFilter.setLines(new Edge().createOutline(new Normalize().normalize(displayImage)));
+        animeFilter.setLines(new BlackAndWhite().blackAndWhite(displayImage));
+        animeFilter.setLines(new Edge().createOutline(displayImage));
         displayImage = animeFilter.getAnimeImage();
         addDisplayImage();
     }
