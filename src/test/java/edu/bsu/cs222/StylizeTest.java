@@ -9,38 +9,38 @@ public class StylizeTest {
 
 
     @Test
-    public void checkSetPrimary() {
+    public void checkSetPrimaryTrue() {
         Color test1 = Color.rgb(117,117,117);
         Assertions.assertTrue(new Stylize().SetPrimary( test1));
     }
 
     @Test
-    public void checkDontSetPrimary(){
+    public void checkSetPrimaryFalse(){
         Color test1 = Color.rgb(0,0,0);
         Assertions.assertFalse(new Stylize().SetPrimary( test1));
     }
 
     @Test
-    public void checkSetSecondary() {
+    public void checkSetSecondaryTrue() {
         Color test1 = Color.rgb(0,0,0);
         Assertions.assertTrue(new Stylize().SetSecondary(test1));
     }
 
     @Test
-    public void checkDontSetSecondary(){
+    public void checkSetSecondaryFalse(){
         Color test1 = Color.rgb(117,117,117);
         Assertions.assertFalse(new Stylize().SetSecondary(test1));
 
     }
 
     @Test
-    public void checkSetTertiary(){
+    public void checkSetTertiaryTrue(){
         Color test1 = Color.rgb(255,255,255);
         Assertions.assertTrue(new Stylize().SetTertiary(test1));
     }
 
     @Test
-    public void checkDontSetTertiary(){
+    public void checkSetTertiaryFalse(){
         Color test1 = Color.rgb(117,117,117);
         Assertions.assertFalse(new Stylize().SetTertiary(test1));
     }

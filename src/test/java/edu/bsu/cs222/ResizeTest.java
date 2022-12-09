@@ -10,12 +10,18 @@ import java.io.FileNotFoundException;
 public class ResizeTest {
 
     @Test
-    public void checkExpandSize() throws FileNotFoundException {
+    public void checkExpandSizeHeight() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
+        Image expandedImage = new ResizeImage().expand(testImage, 2);
+
+        Assertions.assertEquals(testImage.getHeight() * 2, expandedImage.getHeight());
+    }
+    @Test
+    public void checkExpandSizeWidth() throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
         Image expandedImage = new ResizeImage().expand(testImage, 2);
 
         Assertions.assertEquals(testImage.getWidth() * 2, expandedImage.getWidth());
-        Assertions.assertEquals(testImage.getHeight() * 2, expandedImage.getHeight());
     }
 
     @Test
@@ -30,12 +36,19 @@ public class ResizeTest {
 
 
     @Test
-    public void checkShrinkSize() throws FileNotFoundException {
+    public void checkShrinkSizeHeight() throws FileNotFoundException {
+        Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
+        Image expandedImage = new ResizeImage().shrink(testImage, 2);
+
+        Assertions.assertEquals(testImage.getHeight() / 2, expandedImage.getHeight());
+    }
+
+    @Test
+    public void checkShrinkSizeWidth() throws FileNotFoundException {
         Image testImage = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/resources/test.png"));
         Image expandedImage = new ResizeImage().shrink(testImage, 2);
 
         Assertions.assertEquals(testImage.getWidth() / 2, expandedImage.getWidth());
-        Assertions.assertEquals(testImage.getHeight() / 2, expandedImage.getHeight());
     }
 
     @Test
